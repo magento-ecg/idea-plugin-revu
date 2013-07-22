@@ -210,7 +210,9 @@ public class IssueMainForm extends AbstractIssueForm
                       List<IssueTag> tList = new ArrayList<IssueTag>();
                       List<String> sList = new ArrayList<String>(Arrays.asList(tags.split(",")));
                       for (String t : sList) {
-                          tList.add(new IssueTag(t));
+                          if(!t.isEmpty()) {
+                              tList.add(new IssueTag(t));
+                          }
                       }
                       tagsMultiChooserPanel.setSelectedItemDatas(tList);
                   }
