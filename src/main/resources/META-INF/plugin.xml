@@ -284,6 +284,7 @@
       <reference ref="revu.Annotate"/>
       <reference ref="revu.CompareWith"/>
       <add-to-group group-id="EditorGutterPopupMenu" anchor="last"/>
+      <add-to-group group-id="EditorPopupMenu" anchor="last"/>
     </group>
 
     <!-- Gutter -->

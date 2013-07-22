@@ -6,6 +6,7 @@ import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import org.sylfra.idea.plugins.revu.model.DataReferential;
 import org.sylfra.idea.plugins.revu.model.IssuePriority;
+import org.sylfra.idea.plugins.revu.model.IssueName;
 import org.sylfra.idea.plugins.revu.model.IssueTag;
 import org.sylfra.idea.plugins.revu.model.User;
 
@@ -40,6 +41,17 @@ class DataReferentialConverter extends AbstractConverter
       writer.endNode();
     }
     writer.endNode();
+
+      // Names
+      writer.startNode("issueNames");
+      SortedSet<IssueName> issueNames = new TreeSet<IssueName>(
+              referential.getIssueNamesByName(false).values());
+      for (IssueName issueName : issueNames) {
+          writer.startNode("issueName");
+          context.convertAnother(issueName);
+          writer.endNode();
+      }
+      writer.endNode();
 
     // Tags
     writer.startNode("tags");
@@ -83,6 +95,15 @@ class DataReferentialConverter extends AbstractConverter
         }
         referential.setIssuePriorities(priorities);
       }
+        else if ("issueNames".equals(reader.getNodeName())) {
+            List<IssueName> issueNames = new ArrayList<IssueName>();
+            while (reader.hasMoreChildren()) {
+                reader.moveDown();
+                issueNames.add((IssueName) context.convertAnother(issueNames, IssueName.class));
+                reader.moveUp();
+            }
+            referential.setIssueNames(issueNames);
+        }
       else if ("tags".equals(reader.getNodeName()))
       {
         List<IssueTag> tags = new ArrayList<IssueTag>();

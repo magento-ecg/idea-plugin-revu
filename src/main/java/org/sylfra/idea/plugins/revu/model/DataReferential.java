@@ -12,6 +12,7 @@ public class DataReferential extends AbstractRevuEntity<DataReferential>
   private transient Review review;
   private Map<String, IssueTag> issueTagsByName;
   private Map<String, IssuePriority> issuePrioritiesByName;
+  private Map<String, IssueName> issueNamesByName;
   private Map<User.Role, Set<User>> usersByRole;
   private Map<String, User> usersByLogin;
 
@@ -20,6 +21,7 @@ public class DataReferential extends AbstractRevuEntity<DataReferential>
     this.review = review;
     issueTagsByName = new HashMap<String, IssueTag>();
     issuePrioritiesByName = new HashMap<String, IssuePriority>();
+    issueNamesByName = new HashMap<String, IssueName>();
     usersByLogin = new HashMap<String, User>();
     usersByRole = new HashMap<User.Role, Set<User>>();
   }
@@ -62,6 +64,33 @@ public class DataReferential extends AbstractRevuEntity<DataReferential>
   {
     return getIssuePrioritiesByName(true).get(priorityName);
   }
+
+    /// todo: add coments AK
+    @NotNull
+    public Map<String, IssueName> getIssueNamesByName(boolean useLink) {
+        return getMapUsingLinkedReferential(issueNamesByName, ((review.getExtendedReview() == null)
+                ? null : review.getExtendedReview().getDataReferential().getIssueNamesByName(true)), useLink);
+    }
+
+    @NotNull
+    public List<IssueName> getIssueNames(boolean useLink) {
+        return getListUsingLinkedReferential(issueNamesByName, ((review.getExtendedReview() == null)
+                ? null : review.getExtendedReview().getDataReferential().getIssueNames(true)), useLink);
+    }
+
+    public void setIssueNames(@NotNull Collection<IssueName> issueNames) {
+        issueNamesByName = new HashMap<String, IssueName>(issueNames.size());
+        for (IssueName issueName : issueNames) {
+            issueNamesByName.put(issueName.getName(), issueName);
+        }
+    }
+
+    @Nullable
+    public IssueName getIssueName(@NotNull String issueName)
+    {
+        return getIssueNamesByName(true).get(issueName);
+    }
+
 
   @NotNull
   public Map<String, IssueTag> getIssueTagsByName(boolean useLink)
@@ -175,6 +204,7 @@ public class DataReferential extends AbstractRevuEntity<DataReferential>
   {
     issueTagsByName.putAll(dataReferential.getIssueTagsByName(false));
     issuePrioritiesByName.putAll(dataReferential.getIssuePrioritiesByName(false));
+    issueNamesByName.putAll(dataReferential.getIssueNamesByName(false));
     usersByRole.putAll(dataReferential.getUsersByRole(false));
     usersByLogin.putAll(dataReferential.getUsersByLogin(false));
   }
@@ -186,6 +216,7 @@ public class DataReferential extends AbstractRevuEntity<DataReferential>
 
     clone.setIssueTags(cloneList(clone.getIssueTags(false)));
     clone.setIssuePriorities(cloneList(clone.getIssuePriorities(false)));
+    clone.setIssueNames(cloneList(clone.getIssueNames(false)));
     clone.setUsers(cloneList(clone.getUsers(false)));
 
     return clone;
@@ -252,6 +283,13 @@ public class DataReferential extends AbstractRevuEntity<DataReferential>
     {
       return false;
     }
+
+      if (issueNamesByName != null ? !issueNamesByName.equals(that.issueNamesByName) :
+              that.issueNamesByName != null)
+      {
+          return false;
+      }
+
     if (usersByLogin != null ? !usersByLogin.equals(that.usersByLogin) : that.usersByLogin != null)
     {
       return false;
@@ -269,6 +307,7 @@ public class DataReferential extends AbstractRevuEntity<DataReferential>
   {
     int result = issueTagsByName != null ? issueTagsByName.hashCode() : 0;
     result = 31 * result + (issuePrioritiesByName != null ? issuePrioritiesByName.hashCode() : 0);
+    result = 31 * result + (issueNamesByName != null ? issueNamesByName.hashCode() : 0);
     result = 31 * result + (usersByRole != null ? usersByRole.hashCode() : 0);
     result = 31 * result + (usersByLogin != null ? usersByLogin.hashCode() : 0);
     return result;
@@ -280,6 +319,7 @@ public class DataReferential extends AbstractRevuEntity<DataReferential>
     return new ToStringBuilder(this).
       append("issueTagsByName", issueTagsByName).
       append("issuePrioritiesByName", issuePrioritiesByName).
+      append("issueNamesByName", issueNamesByName).
       append("usersByRole", usersByRole).
       append("usersByLogin", usersByLogin).
       toString();

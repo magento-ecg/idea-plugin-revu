@@ -358,7 +358,7 @@ public class RevuProjectViewPane extends AbstractProjectViewPane
         {
           try
           {
-            setIcon(expanded ? node.getOpenIcon() : node.getClosedIcon());
+            setIcon(expanded ? node.getIcon() : node.getIcon());
           }
           catch (NoSuchMethodError e)
           {

@@ -3,6 +3,8 @@ package org.sylfra.idea.plugins.revu.ui.forms.issue;
 import com.intellij.ide.ui.ListCellRendererWrapper;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.ComboBox;
+import com.intellij.ui.ListSpeedSearch;
+import com.intellij.ui.components.JBList;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.sylfra.idea.plugins.revu.RevuBundle;
@@ -17,6 +19,8 @@ import org.sylfra.idea.plugins.revu.utils.RevuUtils;
 import org.sylfra.idea.plugins.revu.utils.RevuVfsUtils;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -47,7 +51,10 @@ public class IssueMainForm extends AbstractIssueForm
   private JLabel lbTags;
   private JLabel lbReview;
   private JPanel pnReview;
-  private ButtonGroup bgLocation;
+    private JTextField tfClassName;
+    private JTextField tfMethodName;
+    private JBList cbIssueName;
+    private ButtonGroup bgLocation;
 
   public IssueMainForm(@NotNull Project project, boolean createMode, boolean inDialog)
   {
@@ -125,6 +132,9 @@ public class IssueMainForm extends AbstractIssueForm
 
             cbPriority.setModel(new DefaultComboBoxModel(buildComboItemsArray(
               new TreeSet<IssuePriority>(referential.getIssuePrioritiesByName(true).values()), true)));
+            tagsMultiChooserPanel.setEnabled(true);
+              cbIssueName.setModel(new DefaultComboBoxModel(buildComboItemsArray(
+                      new TreeSet<IssueName>(referential.getIssueNamesByName(true).values()), true)));
 
             tagsMultiChooserPanel.setEnabled(true);
           }
@@ -132,6 +142,8 @@ public class IssueMainForm extends AbstractIssueForm
           {
 //             "[Select a value]" String is selected
             cbPriority.setModel(new DefaultComboBoxModel(buildComboItemsArray(new ArrayList(0), true)));
+            cbIssueName.setModel(new DefaultComboBoxModel(buildComboItemsArray(new ArrayList(0), true)));
+
 
             tagsMultiChooserPanel.setEnabled(false);
           }
@@ -156,6 +168,55 @@ public class IssueMainForm extends AbstractIssueForm
         return super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
       }
     });
+
+      new ListSpeedSearch(cbIssueName) {
+          @Override
+          protected boolean compare(final String s, final String s1) {
+              return s != null && s1 != null ? s.toUpperCase().contains(s1.toUpperCase()) : super.compare(s, s1);
+          }
+      };
+
+      cbIssueName.addListSelectionListener(new ListSelectionListener() {
+          public void valueChanged(ListSelectionEvent e) {
+              Object selectedIssue = cbIssueName.getSelectedValue();
+              if (selectedIssue != null && e.getValueIsAdjusting()) {
+                  String description = ((IssueName) selectedIssue).getDescription();
+                  String recommendation = ((IssueName) selectedIssue).getRecommendation();
+                  String priority = ((IssueName) selectedIssue).getPriority();
+                  String tags = ((IssueName) selectedIssue).getTags();
+                  if (description != null) {
+                      taSummary.setText(description);
+                  }
+                  if (recommendation != null) {
+                      taDesc.setText(recommendation);
+                  }
+                  if (recommendation != null) {
+                      taDesc.setText(recommendation);
+                  }
+                  if (priority != null) {
+                      byte order = -1;
+                      //todo: remove hardcode
+                      if (priority.equals("High")) {
+                          order = IssuePriority.PRIORITY_HIGH_ORDER;
+                      } else if (priority.equals("Medium")) {
+                          order = IssuePriority.PRIORITY_MEDIUM_ORDER;
+                      } else if (priority.equals("Low")) {
+                          order = IssuePriority.PRIORITY_LOW_ORDER;
+                      }
+                      cbPriority.setSelectedItem(new IssuePriority(order, priority));
+                  }
+                  if (tags != null) {
+                      //todo: simplify
+                      List<IssueTag> tList = new ArrayList<IssueTag>();
+                      List<String> sList = new ArrayList<String>(Arrays.asList(tags.split(",")));
+                      for (String t : sList) {
+                          tList.add(new IssueTag(t));
+                      }
+                      tagsMultiChooserPanel.setSelectedItemDatas(tList);
+                  }
+              }
+          }
+      });
 
     ActionListener locationTypeListener = new ActionListener()
     {
@@ -187,7 +248,7 @@ public class IssueMainForm extends AbstractIssueForm
 
   public JComponent getPreferredFocusedComponent()
   {
-    return cbReview.getSelectedIndex() == 0 ? cbReview : taSummary;
+    return cbReview.getSelectedIndex() == 0 ? cbReview : cbIssueName;
   }
 
   @NotNull
@@ -233,6 +294,10 @@ public class IssueMainForm extends AbstractIssueForm
         cbPriority.setModel(new DefaultComboBoxModel(buildComboItemsArray(
           new TreeSet<IssuePriority>(
             currentIssue.getReview().getDataReferential().getIssuePrioritiesByName(true).values()), true)));
+          cbIssueName.setModel(new DefaultComboBoxModel(buildComboItemsArray(
+                  new TreeSet<IssueName>(
+                          currentIssue.getReview().getDataReferential().getIssueNamesByName(true).values()), true)));
+
         lbReview.setText(RevuBundle.message("issueForm.main.review.text", data.getReview().getName(),
           RevuUtils.buildReviewStatusLabel(data.getReview().getStatus(), true)));
       }
@@ -241,6 +306,9 @@ public class IssueMainForm extends AbstractIssueForm
     taDesc.setText((data == null) ? "" : data.getDesc());
     taSummary.setText((data == null) ? "" : data.getSummary());
     cbPriority.setSelectedItem((data == null) ? null : data.getPriority());
+      cbIssueName.setSelectedValue((data == null) ? null : data.getIssueName(), true);
+      tfClassName.setText((data == null) ? "" : data.getClassName());
+      tfMethodName.setText((data == null) ? "" : data.getMethodName());
     lbSync.setVisible((data != null) && (!isIssueSynchronized(data)));
     tagsMultiChooserPanel.setSelectedItemDatas((data == null) ? null : data.getTags());
     tagsMultiChooserPanel.setEnabled((!createMode) || (cbReview.getSelectedItem() != null));
@@ -258,6 +326,9 @@ public class IssueMainForm extends AbstractIssueForm
 
     data.setDesc(taDesc.getText());
     data.setSummary(taSummary.getText());
+    data.setClassName(tfClassName.getText());
+    data.setMethodName(tfMethodName.getText());
+    data.setIssueName((IssueName) cbIssueName.getSelectedValue());
     data.setPriority((IssuePriority) cbPriority.getSelectedItem());
     data.setTags(tagsMultiChooserPanel.getSelectedItemDatas());
 
@@ -287,7 +358,20 @@ public class IssueMainForm extends AbstractIssueForm
       return true;
     }
 
-    if ((createMode) && (!checkEquals(cbReview.getSelectedItem(), data.getReview())))
+      if (!checkEquals(tfClassName.getText(), data.getClassName())) {
+          return true;
+      }
+
+      if (!checkEquals(tfMethodName.getText(), data.getMethodName())) {
+          return true;
+      }
+      if (!checkEquals(cbIssueName.getSelectedValue(), data.getIssueName())) {
+          return true;
+      }
+
+
+
+      if ((createMode) && (!checkEquals(cbReview.getSelectedItem(), data.getReview())))
     {
       return true;
     }
@@ -317,7 +401,8 @@ public class IssueMainForm extends AbstractIssueForm
     boolean mayReview = (((createMode) || (user != null))
       && ((currentIssue == null) || (currentIssue.getReview() == null)
       || (IssueStatus.CLOSED != currentIssue.getStatus())));
-    RevuUtils.setWriteAccess(mayReview, cbPriority, taSummary, taDesc, rbLocationGlobal);
+    RevuUtils.setWriteAccess(mayReview, cbPriority,
+        taSummary, taDesc, rbLocationGlobal, tfClassName, tfMethodName, cbIssueName);
 
     Issue.LocationType locationType = (currentIssue == null) ? null : currentIssue.getLocationType();
     rbLocationFile.setEnabled(mayReview && !Issue.LocationType.GLOBAL.equals(locationType));

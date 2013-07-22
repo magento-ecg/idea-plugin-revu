@@ -23,7 +23,7 @@ import com.intellij.openapi.editor.colors.EditorFontType;
 import com.intellij.openapi.fileEditor.FileDocumentManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vcs.actions.ActiveAnnotationGutter;
-import com.intellij.openapi.vcs.annotate.AnnotationListener;
+//import com.intellij.openapi.vcs.annotate.;
 import com.intellij.openapi.vcs.annotate.AnnotationSource;
 import com.intellij.openapi.vcs.annotate.FileAnnotation;
 import com.intellij.openapi.vcs.annotate.LineAnnotationAspect;
@@ -51,7 +51,7 @@ class RevuAnnotationFieldGutter implements ActiveAnnotationGutter
   private final FileAnnotation myAnnotation;
   private final FileScopeManager fileScopeManager;
   private final Editor myEditor;
-  private final AnnotationListener myListener;
+//  private final Runnable myListener;
 
   RevuAnnotationFieldGutter(FileAnnotation annotation, Editor editor)
   {
@@ -59,15 +59,13 @@ class RevuAnnotationFieldGutter implements ActiveAnnotationGutter
     myEditor = editor;
     fileScopeManager = ApplicationManager.getApplication().getComponent(FileScopeManager.class);
 
-    myListener = new AnnotationListener()
-    {
-      public void onAnnotationChanged()
-      {
-        myEditor.getGutter().closeAllAnnotations();
-      }
-    };
-
-    myAnnotation.addListener(myListener);
+//    myListener = Runnable onAnnotationChanged()
+//      {
+//        myEditor.getGutter().closeAllAnnotations();
+//      }
+//    };
+//
+//    myAnnotation.setCloser(myListener);
   }
 
   public String getLineText(int line, Editor editor)
@@ -126,8 +124,8 @@ class RevuAnnotationFieldGutter implements ActiveAnnotationGutter
 
   public void gutterClosed()
   {
-    myAnnotation.removeListener(myListener);
-    myAnnotation.dispose();
+//    myAnnotation.removeListener(myListener);
+//    myAnnotation.dispose();
     final Collection<ActiveAnnotationGutter> gutters = myEditor.getUserData(RevuAnnotateToggleAction.KEY_IN_EDITOR);
     if (gutters != null)
     {
