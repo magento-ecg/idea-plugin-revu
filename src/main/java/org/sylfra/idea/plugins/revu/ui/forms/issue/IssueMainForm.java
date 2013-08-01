@@ -22,10 +22,7 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.util.*;
 import java.util.List;
 
@@ -54,7 +51,13 @@ public class IssueMainForm extends AbstractIssueForm
     private JTextField tfClassName;
     private JTextField tfMethodName;
     private JBList cbIssueName;
+    private JButton copyFieldsButton;
+    private JButton pasteFieldsButton;
     private ButtonGroup bgLocation;
+
+  private Map<String, String> cachedFields;
+  private List<IssueTag> cachedTags;
+  private IssueName cachedIssueName;
 
   public IssueMainForm(@NotNull Project project, boolean createMode, boolean inDialog)
   {
@@ -62,6 +65,35 @@ public class IssueMainForm extends AbstractIssueForm
     this.createMode = createMode;
     this.inDialog = inDialog;
     configureUI();
+      copyFieldsButton.addMouseListener(new MouseAdapter() {
+          @Override
+          public void mouseReleased(MouseEvent e) {
+              super.mouseReleased(e);
+              final IssuePriority priority = (IssuePriority) cbPriority.getSelectedItem();
+              cachedFields = new HashMap<String, String>() {{
+                  put("Description", taSummary.getText());
+                  put("Recommendation", taDesc.getText());
+                  put("Priority", priority.getName());
+              }};
+              cachedTags = tagsMultiChooserPanel.getSelectedItemDatas();
+              cachedIssueName = (IssueName) cbIssueName.getSelectedValue();
+          }
+      });
+      pasteFieldsButton.addMouseListener(new MouseAdapter() {
+          @Override
+          public void mouseReleased(MouseEvent e) {
+              super.mouseReleased(e);
+              if (cachedFields != null) {
+                  insertFields(
+                          cachedFields.get("Description"),
+                          cachedFields.get("Recommendation"),
+                          cachedFields.get("Priority"),
+                          cachedTags,
+                          cachedIssueName
+                  );
+              }
+          }
+      });
   }
 
   private void createUIComponents()
@@ -184,38 +216,14 @@ public class IssueMainForm extends AbstractIssueForm
                   String recommendation = ((IssueName) selectedIssue).getRecommendation();
                   String priority = ((IssueName) selectedIssue).getPriority();
                   String tags = ((IssueName) selectedIssue).getTags();
-                  if (description != null) {
-                      taSummary.setText(description);
-                  }
-                  if (recommendation != null) {
-                      taDesc.setText(recommendation);
-                  }
-                  if (recommendation != null) {
-                      taDesc.setText(recommendation);
-                  }
-                  if (priority != null) {
-                      byte order = -1;
-                      //todo: remove hardcode
-                      if (priority.equals("High")) {
-                          order = IssuePriority.PRIORITY_HIGH_ORDER;
-                      } else if (priority.equals("Medium")) {
-                          order = IssuePriority.PRIORITY_MEDIUM_ORDER;
-                      } else if (priority.equals("Low")) {
-                          order = IssuePriority.PRIORITY_LOW_ORDER;
+                  List<IssueTag> tList = new ArrayList<IssueTag>();
+                  List<String> sList = new ArrayList<String>(Arrays.asList(tags.split(",")));
+                  for (String t : sList) {
+                      if (!t.isEmpty()) {
+                          tList.add(new IssueTag(t));
                       }
-                      cbPriority.setSelectedItem(new IssuePriority(order, priority));
                   }
-                  if (tags != null) {
-                      //todo: simplify
-                      List<IssueTag> tList = new ArrayList<IssueTag>();
-                      List<String> sList = new ArrayList<String>(Arrays.asList(tags.split(",")));
-                      for (String t : sList) {
-                          if(!t.isEmpty()) {
-                              tList.add(new IssueTag(t));
-                          }
-                      }
-                      tagsMultiChooserPanel.setSelectedItemDatas(tList);
-                  }
+                  insertFields(description, recommendation, priority, tList, null);
               }
           }
       });
@@ -247,6 +255,36 @@ public class IssueMainForm extends AbstractIssueForm
       }
     });
   }
+
+    public void insertFields(String description, String recommendation, String priority, List<IssueTag> tags, IssueName issueName) {
+        if (description != null) {
+            taSummary.setText(description);
+        }
+        if (recommendation != null) {
+            taDesc.setText(recommendation);
+        }
+        if (recommendation != null) {
+            taDesc.setText(recommendation);
+        }
+        if (priority != null) {
+            byte order = -1;
+            //todo: remove hardcode
+            if (priority.equals("High")) {
+                order = IssuePriority.PRIORITY_HIGH_ORDER;
+            } else if (priority.equals("Medium")) {
+                order = IssuePriority.PRIORITY_MEDIUM_ORDER;
+            } else if (priority.equals("Low")) {
+                order = IssuePriority.PRIORITY_LOW_ORDER;
+            }
+            cbPriority.setSelectedItem(new IssuePriority(order, priority));
+        }
+        if (!tags.isEmpty()) {
+            tagsMultiChooserPanel.setSelectedItemDatas(tags);
+        }
+        if (issueName != null) {
+            cbIssueName.setSelectedValue(issueName, true);
+        }
+    }
 
   public JComponent getPreferredFocusedComponent()
   {
