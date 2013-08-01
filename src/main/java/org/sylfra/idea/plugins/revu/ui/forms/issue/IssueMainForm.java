@@ -55,9 +55,9 @@ public class IssueMainForm extends AbstractIssueForm
     private JButton pasteFieldsButton;
     private ButtonGroup bgLocation;
 
-  private Map<String, String> cachedFields;
-  private List<IssueTag> cachedTags;
-  private IssueName cachedIssueName;
+  private static Map<String, String> cachedFields;
+  private static List<IssueTag> cachedTags;
+  private static IssueName cachedIssueName;
 
   public IssueMainForm(@NotNull Project project, boolean createMode, boolean inDialog)
   {
