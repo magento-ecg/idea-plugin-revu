@@ -10,10 +10,6 @@ import org.jetbrains.annotations.NotNull;
 public class IssuePriority extends AbstractRevuEntity<IssuePriority> implements Comparable<IssuePriority>,
   IRevuUniqueNameHolderEntity<IssuePriority>
 {
-    public static final byte PRIORITY_LOW_ORDER    = 0;
-    public static final byte PRIORITY_MEDIUM_ORDER = 1;
-    public static final byte PRIORITY_HIGH_ORDER   = 2;
-
   private byte order;
   private String name;
 

@@ -38,8 +38,6 @@ class IssueConverter extends AbstractConverter
     }
 
     writer.addAttribute("summary", issue.getSummary());
-    writer.addAttribute("className", issue.getClassName());
-    writer.addAttribute("methodName", issue.getMethodName());
     if (issue.getVcsRev() != null)
     {
       writer.addAttribute("vcsRev", issue.getVcsRev());
@@ -63,11 +61,6 @@ class IssueConverter extends AbstractConverter
     {
       writer.addAttribute("priority", issue.getPriority().getName());
     }
-
-      if (issue.getIssueName() != null) {
-          writer.addAttribute("issueName", issue.getIssueName().getName());
-      }
-
     writer.addAttribute("status", issue.getStatus().toString().toLowerCase());
 
     // Assignees
@@ -108,20 +101,17 @@ class IssueConverter extends AbstractConverter
 
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context)
   {
-    String summary      = reader.getAttribute("summary");
-    String filePath     = reader.getAttribute("filePath");
-    String vcsRev       = reader.getAttribute("vcsRev");
-    String localRev     = reader.getAttribute("localRev");
-    String lineStart    = reader.getAttribute("lineStart");
-    String hash         = reader.getAttribute("hash");
-    String lineEnd      = reader.getAttribute("lineEnd");
-    String tags         = reader.getAttribute("tags");
-    String priority     = reader.getAttribute("priority");
-    String status       = reader.getAttribute("status");
-    String assignees    = reader.getAttribute("assignees");
-    String className    = reader.getAttribute("className");
-    String methodName   = reader.getAttribute("methodName");
-    String issueName    = reader.getAttribute("issueName");
+    String summary = reader.getAttribute("summary");
+    String filePath = reader.getAttribute("filePath");
+    String vcsRev = reader.getAttribute("vcsRev");
+    String localRev = reader.getAttribute("localRev");
+    String lineStart = reader.getAttribute("lineStart");
+    String hash = reader.getAttribute("hash");
+    String lineEnd = reader.getAttribute("lineEnd");
+    String tags = reader.getAttribute("tags");
+    String priority = reader.getAttribute("priority");
+    String status = reader.getAttribute("status");
+    String assignees = reader.getAttribute("assignees");
 
     Review review = getReview(context);
 
@@ -186,15 +176,8 @@ class IssueConverter extends AbstractConverter
     {
       issue.setPriority(review.getDataReferential().getIssuePriority(priority));
     }
-
-      if (issueName != null) {
-          issue.setIssueName(review.getDataReferential().getIssueName(issueName));
-      }
-
     issue.setStatus(IssueStatus.valueOf(status.toUpperCase()));
     issue.setSummary(summary);
-      issue.setClassName(className);
-      issue.setMethodName(methodName);
 
     while (reader.hasMoreChildren())
     {

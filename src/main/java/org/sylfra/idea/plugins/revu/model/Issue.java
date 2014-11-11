@@ -29,13 +29,9 @@ public class Issue extends AbstractRevuEntity<Issue> implements IRevuHistoryHold
   private History history;
   private Review review;
   private User resolver;
-  private String snippet;
   private String summary;
   private String desc;
-  private String className;
-  private String methodName;
   private IssuePriority priority;
-  private IssueName issueName;
   private List<IssueTag> tags;
   private IssueStatus status;
   private List<User> assignees;
@@ -152,14 +148,6 @@ public class Issue extends AbstractRevuEntity<Issue> implements IRevuHistoryHold
     this.summary = summary;
   }
 
-  public String getSnippet() {
-    return snippet;
-  }
-
-  public void setSnippet(String snippet) {
-    this.snippet = snippet;
-  }
-
   public String getDesc()
   {
     return desc;
@@ -169,26 +157,6 @@ public class Issue extends AbstractRevuEntity<Issue> implements IRevuHistoryHold
   {
     this.desc = desc;
   }
-
-    public String getClassName()
-    {
-        return className;
-    }
-
-    public void setClassName(String className)
-    {
-        this.className = className;
-    }
-
-    public String getMethodName()
-    {
-        return methodName;
-    }
-
-    public void setMethodName(String methodName)
-    {
-        this.methodName = methodName;
-    }
 
   @Nullable
   public IssuePriority getPriority()
@@ -200,15 +168,6 @@ public class Issue extends AbstractRevuEntity<Issue> implements IRevuHistoryHold
   {
     this.priority = priority;
   }
-
-    @Nullable
-    public IssueName getIssueName() {
-        return issueName;
-    }
-
-    public void setIssueName(@Nullable IssueName issueName) {
-        this.issueName = issueName;
-    }
 
   public List<IssueTag> getTags()
   {
@@ -271,7 +230,6 @@ public class Issue extends AbstractRevuEntity<Issue> implements IRevuHistoryHold
   }
 
   // TODO Should not be here since not used in reVu (but in a extension)?!
-  // todo: properties className and methodName issueName not covered in this method A.K.
   public void copyFrom(Issue source)
   {
     setFile(source.getFile());
@@ -317,10 +275,7 @@ public class Issue extends AbstractRevuEntity<Issue> implements IRevuHistoryHold
     result = 31 * result + (resolver != null ? resolver.hashCode() : 0);
     result = 31 * result + (summary != null ? summary.hashCode() : 0);
     result = 31 * result + (desc != null ? desc.hashCode() : 0);
-    result = 31 * result + (className != null ? className.hashCode() : 0);
-    result = 31 * result + (methodName != null ? methodName.hashCode() : 0);
     result = 31 * result + (priority != null ? priority.hashCode() : 0);
-    result = 31 * result + (issueName != null ? issueName.hashCode() : 0);
     result = 31 * result + (tags != null ? tags.hashCode() : 0);
     result = 31 * result + (status != null ? status.hashCode() : 0);
     result = 31 * result + (assignees != null ? assignees.hashCode() : 0);
@@ -382,10 +337,6 @@ public class Issue extends AbstractRevuEntity<Issue> implements IRevuHistoryHold
     {
       return false;
     }
-      if (issueName != null ? !issueName.equals(that.issueName) : that.issueName != null)
-      {
-          return false;
-      }
     if (status != that.status)
     {
       return false;
@@ -398,17 +349,6 @@ public class Issue extends AbstractRevuEntity<Issue> implements IRevuHistoryHold
     {
       return false;
     }
-
-    if (className != null ? !className.equals(that.className) : that.className != null)
-    {
-      return false;
-    }
-
-    if (methodName != null ? !methodName.equals(that.methodName) : that.methodName != null)
-    {
-      return false;
-    }
-
     if (vcsRev != null ? !vcsRev.equals(that.vcsRev) : that.vcsRev != null)
     {
       return false;
@@ -446,10 +386,7 @@ public class Issue extends AbstractRevuEntity<Issue> implements IRevuHistoryHold
       append("resolver", resolver).
       append("summary", summary).
       append("desc", desc).
-      append("className", className).
-      append("methodName", methodName).
       append("priority", priority).
-      append("issueName", issueName).
       append("tags", tags).
       append("status", status).
       append("assignees", assignees).

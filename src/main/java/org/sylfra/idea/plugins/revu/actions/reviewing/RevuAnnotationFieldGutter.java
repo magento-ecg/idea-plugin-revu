@@ -23,7 +23,6 @@ import com.intellij.openapi.editor.colors.EditorFontType;
 import com.intellij.openapi.fileEditor.FileDocumentManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vcs.actions.ActiveAnnotationGutter;
-//import com.intellij.openapi.vcs.annotate.;
 import com.intellij.openapi.vcs.annotate.AnnotationSource;
 import com.intellij.openapi.vcs.annotate.FileAnnotation;
 import com.intellij.openapi.vcs.annotate.LineAnnotationAspect;
@@ -36,13 +35,10 @@ import org.sylfra.idea.plugins.revu.model.Review;
 import org.sylfra.idea.plugins.revu.utils.RevuUtils;
 
 import java.awt.*;
-import java.util.Collection;
-import java.util.Collections;
+import java.util.*;
 import java.util.List;
 
 /**
- * @author Irina Chernushina
- * @author Konstantin Bulenkov
  */
 class RevuAnnotationFieldGutter implements ActiveAnnotationGutter
 {
@@ -51,24 +47,19 @@ class RevuAnnotationFieldGutter implements ActiveAnnotationGutter
   private final FileAnnotation myAnnotation;
   private final FileScopeManager fileScopeManager;
   private final Editor myEditor;
-//  private final Runnable myListener;
 
-  RevuAnnotationFieldGutter(FileAnnotation annotation, Editor editor)
-  {
-    myAnnotation = annotation;
-    myEditor = editor;
-    fileScopeManager = ApplicationManager.getApplication().getComponent(FileScopeManager.class);
+    private Map<Integer, Boolean> lineHighlight = new HashMap<Integer, Boolean>();
 
-//    myListener = Runnable onAnnotationChanged()
-//      {
-//        myEditor.getGutter().closeAllAnnotations();
-//      }
-//    };
-//
-//    myAnnotation.setCloser(myListener);
-  }
+    private Map<VcsRevisionNumber, Boolean> revisionHighlight = new HashMap<VcsRevisionNumber, Boolean>();
 
-  public String getLineText(int line, Editor editor)
+    RevuAnnotationFieldGutter(FileAnnotation annotation, Editor editor)
+    {
+        myAnnotation = annotation;
+        myEditor = editor;
+        fileScopeManager = ApplicationManager.getApplication().getComponent(FileScopeManager.class);
+    }
+
+    public String getLineText(int line, Editor editor)
   {
     if (!isLineHightlighted(line, editor))
     {
@@ -124,8 +115,7 @@ class RevuAnnotationFieldGutter implements ActiveAnnotationGutter
 
   public void gutterClosed()
   {
-//    myAnnotation.removeListener(myListener);
-//    myAnnotation.dispose();
+    myAnnotation.dispose();
     final Collection<ActiveAnnotationGutter> gutters = myEditor.getUserData(RevuAnnotateToggleAction.KEY_IN_EDITOR);
     if (gutters != null)
     {
@@ -146,21 +136,33 @@ class RevuAnnotationFieldGutter implements ActiveAnnotationGutter
 
   private boolean isLineHightlighted(final int line, final Editor editor)
   {
-    final VcsRevisionNumber number = myAnnotation.getLineRevisionNumber(line);
-    if (number != null)
-    {
-      Project project = editor.getProject();
-      Review review = RevuUtils.getReviewingReview(project);
-      if (review != null)
-      {
-        VirtualFile vFile = FileDocumentManager.getInstance().getFile(editor.getDocument());
-        if (!fileScopeManager.matchFrom(project, review.getFileScope(), vFile, number))
-        {
-          return false;
-        }
+      Boolean aBoolean = lineHighlight.get(line);
+      if (null == aBoolean) {
+          final VcsRevisionNumber number = myAnnotation.getLineRevisionNumber(line);
+          VirtualFile vFile = FileDocumentManager.getInstance().getFile(editor.getDocument());
+          aBoolean = isRevisionHighlighted(number, editor.getProject(), vFile);
+          lineHighlight.put(line, aBoolean);
       }
-    }
-
-    return true;
+      return aBoolean;
   }
+
+    private Boolean isRevisionHighlighted(VcsRevisionNumber number, Project project, VirtualFile vFile)
+    {
+        Boolean aBoolean = revisionHighlight.get(number);
+        if (null == aBoolean) {
+            aBoolean = true;
+            if (number != null) {
+                Review review = RevuUtils.getReviewingReview(project);
+                if (review != null) {
+                    if (!fileScopeManager.matchFrom(project, review.getFileScope(), vFile, number)) {
+                        aBoolean = false;
+                    }
+                }
+            } else {
+                aBoolean = false;
+            }
+            revisionHighlight.put(number, aBoolean);
+        }
+        return aBoolean;
+    }
 }

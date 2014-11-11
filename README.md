@@ -102,13 +102,13 @@ A review may apply to all files inside project, or only for some selected file. 
 
 ### Perform review
 
-Issues may be added as soon as the review is in *reviewing* mode. To pass a review in *reviewing* mode, just change its status in settings or click on `Start Reviewing -> \[Some Review]` menu. You may activate several reviews at the same time. By clicking on `Start Reviewing -> \[Some Review]` menu, you make the selected review the default one.
+Issues may be added as soon as the review is in *reviewing* mode. To pass a review in *reviewing* mode, just change its status in settings or click on `Start Reviewing -> [Some Review]` menu. You may activate several reviews at the same time. By clicking on `Start Reviewing -> [Some Review]` menu, you make the selected review the default one.
 
 A new type of project views is available: for each active review (status = *reviewing* or *fixing*), you will be able to use a dedicated project view showing files matching selection defined in review settings. You can filter this view to show only files with issues. 
 
 ![Project view](https://github.com/syllant/idea-plugin-revu/raw/master/src/main/doc/screenshots/projectView.png)
 
-When you have started a review (after clicking on `Start Reviewing -> \[Some Review]` menu), 2 new menu items are enabled in editor gutter:
+When you have started a review (after clicking on `Start Reviewing -> [Some Review]` menu), 2 new menu items are enabled in editor gutter:
 
 *   *Annotate for \[Some Review]*
 *   *Compare for \[Some Review]*
@@ -204,10 +204,11 @@ Please use [Issue tracker](https://github.com/syllant/idea-plugin-revu/issues).
 
 ## Credits
 
-Icons come from famous FAMFAMFAM Silk icon library: <http://www.famfamfam.com/lab/icons/silk>. 
+* Icons come from famous FAMFAMFAM Silk icon library: <http://www.famfamfam.com/lab/icons/silk>. 
 
-Thanks to YourKit for providing a free licence for [YourKit Java Profiler](http://www.yourkit.com/java/profiler/index.jsp).
+* Thanks to JProfiler for providing a free licence for their [java profiler](http://www.ej-technologies.com/products/jprofiler/overview.html).
 
-*YourKit is kindly supporting open source projects with its full-featured Java Profiler.*
+* Thanks to YourKit for providing a free licence for [YourKit Java Profiler](http://www.yourkit.com/java/profiler/index.jsp).
+> *YourKit is kindly supporting open source projects with its full-featured Java Profiler.*
 *YourKit, LLC is the creator of innovative and intelligent tools for profiling Java and .NET applications.*
 *Take a look at !YourKit's leading software products: [YourKit Java Profiler](http://www.yourkit.com/java/profiler/index.jsp) and [YourKit .NET Profiler](http://www.yourkit.com/.net/profiler/index.jsp).*
