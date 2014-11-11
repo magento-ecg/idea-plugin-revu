@@ -22,6 +22,9 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" exported="" name="sass" level="project" />
+    <orderEntry type="library" exported="" name="php-openapi" level="project" />
+    <orderEntry type="library" exported="" name="php" level="project" />
   </component>
   <component name="copyright">
     <Base>
@@ -29,4 +32,3 @@
     </Base>
   </component>
 </module>
-

@@ -1,8 +1,10 @@
 package org.sylfra.idea.plugins.revu.ui.forms.issue;
 
+import com.intellij.ui.ListCellRendererWrapper;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.ComboBox;
-import com.intellij.ui.ListCellRendererWrapper;
+import com.intellij.ui.ListSpeedSearch;
+import com.intellij.ui.components.JBList;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.sylfra.idea.plugins.revu.RevuBundle;
@@ -17,11 +19,10 @@ import org.sylfra.idea.plugins.revu.utils.RevuUtils;
 import org.sylfra.idea.plugins.revu.utils.RevuVfsUtils;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.util.*;
 import java.util.List;
 
@@ -47,7 +48,16 @@ public class IssueMainForm extends AbstractIssueForm
   private JLabel lbTags;
   private JLabel lbReview;
   private JPanel pnReview;
-  private ButtonGroup bgLocation;
+    private JTextField tfClassName;
+    private JTextField tfMethodName;
+    private JBList cbIssueName;
+    private JButton copyFieldsButton;
+    private JButton pasteFieldsButton;
+    private ButtonGroup bgLocation;
+
+  private static Map<String, String> cachedFields;
+  private static List<IssueTag> cachedTags;
+  private static IssueName cachedIssueName;
 
   public IssueMainForm(@NotNull Project project, boolean createMode, boolean inDialog)
   {
@@ -55,6 +65,35 @@ public class IssueMainForm extends AbstractIssueForm
     this.createMode = createMode;
     this.inDialog = inDialog;
     configureUI();
+      copyFieldsButton.addMouseListener(new MouseAdapter() {
+          @Override
+          public void mouseReleased(MouseEvent e) {
+              super.mouseReleased(e);
+              final IssuePriority priority = (IssuePriority) cbPriority.getSelectedItem();
+              cachedFields = new HashMap<String, String>() {{
+                  put("Description", taSummary.getText());
+                  put("Recommendation", taDesc.getText());
+                  put("Priority", priority.getName());
+              }};
+              cachedTags = tagsMultiChooserPanel.getSelectedItemDatas();
+              cachedIssueName = (IssueName) cbIssueName.getSelectedValue();
+          }
+      });
+      pasteFieldsButton.addMouseListener(new MouseAdapter() {
+          @Override
+          public void mouseReleased(MouseEvent e) {
+              super.mouseReleased(e);
+              if (cachedFields != null) {
+                  insertFields(
+                          cachedFields.get("Description"),
+                          cachedFields.get("Recommendation"),
+                          cachedFields.get("Priority"),
+                          cachedTags,
+                          cachedIssueName
+                  );
+              }
+          }
+      });
   }
 
   private void createUIComponents()
@@ -90,7 +129,8 @@ public class IssueMainForm extends AbstractIssueForm
     if (createMode)
     {
       cbReview.setModel(new ReviewComboBoxModel(project));
-      cbReview.setRenderer(new ListCellRendererWrapper<Review>()
+      //  cbReview.setRenderer(new ListCellRendererWrapper<Review>(cbReview)
+        cbReview.setRenderer(new ListCellRendererWrapper<Review>()
       {
         @Override
         public void customize(JList list, Review review, int index, boolean selected, boolean hasFocus)
@@ -125,6 +165,9 @@ public class IssueMainForm extends AbstractIssueForm
 
             cbPriority.setModel(new DefaultComboBoxModel(buildComboItemsArray(
               new TreeSet<IssuePriority>(referential.getIssuePrioritiesByName(true).values()), true)));
+            tagsMultiChooserPanel.setEnabled(true);
+              cbIssueName.setModel(new DefaultComboBoxModel(buildComboItemsArray(
+                      new TreeSet<IssueName>(referential.getIssueNamesByName(true).values()), true)));
 
             tagsMultiChooserPanel.setEnabled(true);
           }
@@ -132,6 +175,8 @@ public class IssueMainForm extends AbstractIssueForm
           {
 //             "[Select a value]" String is selected
             cbPriority.setModel(new DefaultComboBoxModel(buildComboItemsArray(new ArrayList(0), true)));
+            cbIssueName.setModel(new DefaultComboBoxModel(buildComboItemsArray(new ArrayList(0), true)));
+
 
             tagsMultiChooserPanel.setEnabled(false);
           }
@@ -139,22 +184,51 @@ public class IssueMainForm extends AbstractIssueForm
       });
     }
 
-    cbPriority.setRenderer(new ListCellRendererWrapper<IssuePriority>()
+    cbPriority.setRenderer(new DefaultListCellRenderer()
     {
       @Override
-      public void customize(JList jList, IssuePriority value, int i, boolean b, boolean b2)
+      public Component getListCellRendererComponent(JList list, Object value, int index,
+        boolean isSelected, boolean cellHasFocus)
       {
         if (value == null)
         {
-          setText(RevuBundle.message(((createMode) && (cbReview.getSelectedItem() == null))
-            ? "general.selectReviewBeforeFillingCombo.text" : "general.selectComboValue.text"));
+          value = RevuBundle.message(((createMode) && (cbReview.getSelectedItem() == null))
+            ? "general.selectReviewBeforeFillingCombo.text" : "general.selectComboValue.text");
         }
         else
         {
-          setText(value.getName());
+          value = ((IssuePriority) value).getName();
         }
+        return super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
       }
     });
+
+      new ListSpeedSearch(cbIssueName) {
+          @Override
+          protected boolean compare(final String s, final String s1) {
+              return s != null && s1 != null ? s.toUpperCase().contains(s1.toUpperCase()) : super.compare(s, s1);
+          }
+      };
+
+      cbIssueName.addListSelectionListener(new ListSelectionListener() {
+          public void valueChanged(ListSelectionEvent e) {
+              Object selectedIssue = cbIssueName.getSelectedValue();
+              if (selectedIssue != null && e.getValueIsAdjusting()) {
+                  String description = ((IssueName) selectedIssue).getDescription();
+                  String recommendation = ((IssueName) selectedIssue).getRecommendation();
+                  String priority = ((IssueName) selectedIssue).getPriority();
+                  String tags = ((IssueName) selectedIssue).getTags();
+                  List<IssueTag> tList = new ArrayList<IssueTag>();
+                  List<String> sList = new ArrayList<String>(Arrays.asList(tags.split(",")));
+                  for (String t : sList) {
+                      if (!t.isEmpty()) {
+                          tList.add(new IssueTag(t));
+                      }
+                  }
+                  insertFields(description, recommendation, priority, tList, null);
+              }
+          }
+      });
 
     ActionListener locationTypeListener = new ActionListener()
     {
@@ -184,9 +258,39 @@ public class IssueMainForm extends AbstractIssueForm
     });
   }
 
+    public void insertFields(String description, String recommendation, String priority, List<IssueTag> tags, IssueName issueName) {
+        if (description != null) {
+            taSummary.setText(description);
+        }
+        if (recommendation != null) {
+            taDesc.setText(recommendation);
+        }
+        if (recommendation != null) {
+            taDesc.setText(recommendation);
+        }
+        if (priority != null) {
+            byte order = -1;
+            //todo: remove hardcode
+            if (priority.equals("High")) {
+                order = IssuePriority.PRIORITY_HIGH_ORDER;
+            } else if (priority.equals("Medium")) {
+                order = IssuePriority.PRIORITY_MEDIUM_ORDER;
+            } else if (priority.equals("Low")) {
+                order = IssuePriority.PRIORITY_LOW_ORDER;
+            }
+            cbPriority.setSelectedItem(new IssuePriority(order, priority));
+        }
+        if (!tags.isEmpty()) {
+            tagsMultiChooserPanel.setSelectedItemDatas(tags);
+        }
+        if (issueName != null) {
+            cbIssueName.setSelectedValue(issueName, true);
+        }
+    }
+
   public JComponent getPreferredFocusedComponent()
   {
-    return cbReview.getSelectedIndex() == 0 ? cbReview : taSummary;
+    return cbReview.getSelectedIndex() == 0 ? cbReview : cbIssueName;
   }
 
   @NotNull
@@ -232,6 +336,10 @@ public class IssueMainForm extends AbstractIssueForm
         cbPriority.setModel(new DefaultComboBoxModel(buildComboItemsArray(
           new TreeSet<IssuePriority>(
             currentIssue.getReview().getDataReferential().getIssuePrioritiesByName(true).values()), true)));
+          cbIssueName.setModel(new DefaultComboBoxModel(buildComboItemsArray(
+                  new TreeSet<IssueName>(
+                          currentIssue.getReview().getDataReferential().getIssueNamesByName(true).values()), true)));
+
         lbReview.setText(RevuBundle.message("issueForm.main.review.text", data.getReview().getName(),
           RevuUtils.buildReviewStatusLabel(data.getReview().getStatus(), true)));
       }
@@ -240,6 +348,9 @@ public class IssueMainForm extends AbstractIssueForm
     taDesc.setText((data == null) ? "" : data.getDesc());
     taSummary.setText((data == null) ? "" : data.getSummary());
     cbPriority.setSelectedItem((data == null) ? null : data.getPriority());
+      cbIssueName.setSelectedValue((data == null) ? null : data.getIssueName(), true);
+      tfClassName.setText((data == null) ? "" : data.getClassName());
+      tfMethodName.setText((data == null) ? "" : data.getMethodName());
     lbSync.setVisible((data != null) && (!isIssueSynchronized(data)));
     tagsMultiChooserPanel.setSelectedItemDatas((data == null) ? null : data.getTags());
     tagsMultiChooserPanel.setEnabled((!createMode) || (cbReview.getSelectedItem() != null));
@@ -257,6 +368,9 @@ public class IssueMainForm extends AbstractIssueForm
 
     data.setDesc(taDesc.getText());
     data.setSummary(taSummary.getText());
+    data.setClassName(tfClassName.getText());
+    data.setMethodName(tfMethodName.getText());
+    data.setIssueName((IssueName) cbIssueName.getSelectedValue());
     data.setPriority((IssuePriority) cbPriority.getSelectedItem());
     data.setTags(tagsMultiChooserPanel.getSelectedItemDatas());
 
@@ -286,7 +400,20 @@ public class IssueMainForm extends AbstractIssueForm
       return true;
     }
 
-    if ((createMode) && (!checkEquals(cbReview.getSelectedItem(), data.getReview())))
+      if (!checkEquals(tfClassName.getText(), data.getClassName())) {
+          return true;
+      }
+
+      if (!checkEquals(tfMethodName.getText(), data.getMethodName())) {
+          return true;
+      }
+      if (!checkEquals(cbIssueName.getSelectedValue(), data.getIssueName())) {
+          return true;
+      }
+
+
+
+      if ((createMode) && (!checkEquals(cbReview.getSelectedItem(), data.getReview())))
     {
       return true;
     }
@@ -316,7 +443,8 @@ public class IssueMainForm extends AbstractIssueForm
     boolean mayReview = (((createMode) || (user != null))
       && ((currentIssue == null) || (currentIssue.getReview() == null)
       || (IssueStatus.CLOSED != currentIssue.getStatus())));
-    RevuUtils.setWriteAccess(mayReview, cbPriority, taSummary, taDesc, rbLocationGlobal);
+    RevuUtils.setWriteAccess(mayReview, cbPriority,
+        taSummary, taDesc, rbLocationGlobal, tfClassName, tfMethodName, cbIssueName);
 
     Issue.LocationType locationType = (currentIssue == null) ? null : currentIssue.getLocationType();
     rbLocationFile.setEnabled(mayReview && !Issue.LocationType.GLOBAL.equals(locationType));
