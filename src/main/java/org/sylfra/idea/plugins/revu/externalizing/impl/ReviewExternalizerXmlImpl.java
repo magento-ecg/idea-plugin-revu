@@ -120,7 +120,10 @@ public class ReviewExternalizerXmlImpl implements IReviewExternalizer, ProjectCo
 
           chmodReviewFile(file);
 
-          VirtualFile vFile = vParentFile.createChildData(this, file.getName());
+          VirtualFile vFile = vParentFile.findChild(file.getName());
+          if (vFile == null) {
+            vFile = vParentFile.createChildData(this, file.getName());
+          }
           VfsUtil.saveText(vFile, writer.toString());
         }
         catch (RevuException e)

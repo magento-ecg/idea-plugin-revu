@@ -11,21 +11,3131 @@ You may use this template when you don't want customize tags or priorities defin
 Otherwise, you should create another template suiting your needs]]></goal>
   <referential>
     <priorities>
-      <priority order="0" name="minor"/>
-      <priority order="1" name="normal"/>
-      <priority order="2" name="major"/>
-      <priority order="3" name="critical"/>
+      <priority order="0" name="Low"/>
+      <priority order="1" name="Medium"/>
+      <priority order="2" name="High"/>
     </priorities>
+    <issueNames>
+      <issueName>
+        <order>1</order>
+        <name>Code Duplication</name>
+        <description></description>
+        <recommendation>As a general rule of thumb, be sure to reuse code as much as possible.</recommendation>
+        <priority>Low</priority>
+        <tags>Architecture,Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>2</order>
+        <name>Coding Standards Violation</name>
+        <description>The software does not follow certain coding rules for development, which can result in issues or increase the severity of the associated vulnerabilities.</description>
+        <recommendation>Document and closely follow coding standards. Where possible, use automated tools to enforce the standards.</recommendation>
+        <priority>Low</priority>
+        <tags>Code Style</tags>
+      </issueName>
+      <issueName>
+        <order>3</order>
+        <name>Copy and Paste Programming</name>
+        <description></description>
+        <recommendation>Reuse code as much as possible.</recommendation>
+        <priority>Low</priority>
+        <tags>Architecture,Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>4</order>
+        <name>Empty Method</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority></priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>5</order>
+        <name>Incorrect Use of Byte Order Mask</name>
+        <description>BOM would cause Headers already sent error or break HTML in the browser.</description>
+        <recommendation>Remove incorrect BOM.</recommendation>
+        <priority>Medium</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>6</order>
+        <name>Overcomplicated Condition</name>
+        <description>For example with empty if or else.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other,Code Style,Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>7</order>
+        <name>Syntax Error</name>
+        <description>Syntax errors can lead to fatal errors.</description>
+        <recommendation></recommendation>
+        <priority>High</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>8</order>
+        <name>Coding Standards Violation: Indicator of Poor Code Quality</name>
+        <description>The code has features that do not directly introduce an issue, but indicate that the product has not been carefully developed or maintained.&#xd;
+          &#xd;
+          Programs are more likely to be safe and  when good development practices are followed. If a program is complex, difficult to maintain, not portable, or shows evidence of neglect, then there is a higher likelihood that issues are buried in the code.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>9</order>
+        <name>Compatibility Issues: Child Method Duplicates It&apos;s Parent</name>
+        <description></description>
+        <recommendation>Remove duplicates, think about upgreadability. Method can be changed in the future Magento versions. </recommendation>
+        <priority>Low</priority>
+        <tags>Compatibility,Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>10</order>
+        <name>Compatibility Issues: Class is Rewritten More Than Once</name>
+        <description>Core class is rewritten by more than one custom or community module By logic or by configuration Files copied from core files (templates) save(), load method Just to call parent or emptiness.</description>
+        <recommendation></recommendation>
+        <priority>High</priority>
+        <tags>Compatibility</tags>
+      </issueName>
+      <issueName>
+        <order>11</order>
+        <name>Compatibility Issues: Code Is Out of Date</name>
+        <description>Code version differs from the current Magento&apos;s.</description>
+        <recommendation></recommendation>
+        <priority>Medium</priority>
+        <tags>Compatibility</tags>
+      </issueName>
+      <issueName>
+        <order>12</order>
+        <name>Compatibility Issues: Configuration Driven Core Classes Rewrite Conflict</name>
+        <description>Different custom modules rewrite same class</description>
+        <recommendation></recommendation>
+        <priority>High</priority>
+        <tags>Compatibility</tags>
+      </issueName>
+      <issueName>
+        <order>13</order>
+        <name>Compatibility Issues: Duplicated Class Name</name>
+        <description>Multiple classes with the same name found.</description>
+        <recommendation>Check compatibility.</recommendation>
+        <priority>Low</priority>
+        <tags>Compatibility</tags>
+      </issueName>
+      <issueName>
+        <order>14</order>
+        <name>Compatibility Issues: Improper Core Classes Rewrites</name>
+        <description>Redundant/incorrect core classes rewrites. </description>
+        <recommendation></recommendation>
+        <priority>Medium</priority>
+        <tags>Compatibility</tags>
+      </issueName>
+      <issueName>
+        <order>15</order>
+        <name>Compatibility Issues: Magento Go Compatibility Issue</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Compatibility</tags>
+      </issueName>
+      <issueName>
+        <order>16</order>
+        <name>Compatibility Issues: Missing Parent Method Call</name>
+        <description>The parent method is not called.&#xd;
+          &#xd;
+          The code may be incompatible with the future Magento versions.</description>
+        <recommendation>As a general rule of thumb, do not forget to call the parent method as it will provide a better chance of compatibility with newer versions of Magento.</recommendation>
+        <priority>Medium</priority>
+        <tags>Compatibility</tags>
+      </issueName>
+      <issueName>
+        <order>17</order>
+        <name>Compatibility Issues: Modification of Magento Core Database Tables</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Medium</priority>
+        <tags>Compatibility</tags>
+      </issueName>
+      <issueName>
+        <order>18</order>
+        <name>Compatibility Issues: Modification of Magento Core Files</name>
+        <description>Files in the core code pool shoud not be touched by end-user or community developers.</description>
+        <recommendation>Core classes should not be modified.</recommendation>
+        <priority>High</priority>
+        <tags>Compatibility</tags>
+      </issueName>
+      <issueName>
+        <order>19</order>
+        <name>Compatibility Issues: Unnecessary Overridden Method</name>
+        <description>Overridden method simply call or duplicate it&apos;s parent.</description>
+        <recommendation>Remove unnecessary overriden method.&#xd;
+          &#xd;
+          Examples:&#xd;
+          public function __construct($a, $b)
+          {
+          parent::__construct($a, $b);
+          }&#xd;
+          &#xd;
+          References:&#xd;
+        </recommendation>
+        <priority>Low</priority>
+        <tags>Compatibility</tags>
+      </issueName>
+      <issueName>
+        <order>20</order>
+        <name>Compatibility Issues: Violation from Parent Declaration</name>
+        <description>Class hierarchy checks: abstract methods implementation, implementing/overriding method is compatibility with super declaration. All violations result in PHP fatal errors. </description>
+        <recommendation></recommendation>
+        <priority>High</priority>
+        <tags>Compatibility</tags>
+      </issueName>
+      <issueName>
+        <order>21</order>
+        <name>Compatibility Issues: PHP Version Issue</name>
+        <description>Checks that language features used in the source code correspond the selected language level. (i.e. traits can be used only in PHP 5.4). </description>
+        <recommendation></recommendation>
+        <priority>High</priority>
+        <tags>Compatibility</tags>
+      </issueName>
+      <issueName>
+        <order>22</order>
+        <name>Control Flow Issues: Assignment in Condition</name>
+        <description>Using assignments in conditional expressions may cause errors that are hard to detect and is therefore considered bad programming practice. </description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>23</order>
+        <name>Control Flow Issues: Missing Break Statement </name>
+        <description>Case clause execution can unintentionally falls through the next case, which is most often an error. A break or a return statement at the end of the case will prevent this error. </description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>24</order>
+        <name>Control Flow Issues: Missing Return Statement </name>
+        <description>Case clause execution can unintentionally falls through the next case, which is most often an error. A break or a return statement at the end of the case will prevent this error. </description>
+        <recommendation></recommendation>
+        <priority>Medium</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>25</order>
+        <name>Control Flow Issues: Nested vs Outher Foreach Variables Conflict </name>
+        <description>In most cases, using the same variable as a key or value both by the inner and outer &#x91;foreach&#x92; loops either is an error or may result in an error in the future. </description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>26</order>
+        <name>Control Flow Issues: Redundant or Less-Than-Optimal Condition </name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>27</order>
+        <name>Control Flow Issues: Void Function Result Used</name>
+        <description>The value of a void function is most likely used by mistake, because such functions do not have a return value (they will return null).Recommendation: Specify method return explicitly or do not use function result.  </description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>28</order>
+        <name>Control Flow Issues: Unreachable Statement</name>
+        <description>Statement cannot be normally reached. </description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>29</order>
+        <name>Control Flow Issues: Inconsistent Return Points </name>
+        <description>3 following types of inconsistencies are possible:
+          1) The function/method contains return statements with arguments as well as without them
+          2) The function/method may happen to return a value or end it&apos;s execution without a return statement at all
+          3) The function/method is declared void but contains return statements with arguments
+          Technically these are not errors but practically usually indicate programmer&#x92;s mistakes.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>30</order>
+        <name>Control Flow: Duplicate Case In Switch Statement</name>
+        <description>If switch contains multiple case expressions, only the first one will be executed.</description>
+        <recommendation>Remove duplicated cases.&#xd;
+          &#xd;
+          Examples:&#xd;
+          switch ($expr) {
+          case ID_1:
+          $result = $this-&gt;getId1($expr);
+          break;
+          case ID_1:
+          $result = $this-&gt;getId2($expr);
+          break;
+          }&#xd;
+          &#xd;
+          References:&#xd;
+          http://php.net/manual/en/control-structures.switch.php</recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>31</order>
+        <name>CSS Issues: Invalid CSS Element</name>
+        <description>Inappropriate values assigned to CSS attributes. For example, invalid measurement units or values out of range.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>32</order>
+        <name>CSS Issues: Invalid CSS Selector</name>
+        <description>Uknown CSS selectors.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>33</order>
+        <name>CSS Issues: Invalid RGB Function Value</name>
+        <description>The correctness of parameters of the rgb(r, g, b) function used in CSS attributes.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>34</order>
+        <name>CSS Issues: Invalid Shorthand Property Value</name>
+        <description>Shorthand values assigned to CSS attributes that do not support shorthand attributes. For example, a margin specification assigned to margin-top or margin-left attribute.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>35</order>
+        <name>CSS Issues: Misplaced CSS @import</name>
+        <description>Misplaced CSS @import declarations.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>36</order>
+        <name>CSS Issues: Missing Generic Font Name</name>
+        <description>The CSS font-family does not contain a generic font name as a fallback alternative.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>37</order>
+        <name>CSS Issues: Missing/Redundant Measure Unit</name>
+        <description>CSS number property values for which no units of measurement are specified.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>38</order>
+        <name>CSS Issues: Negative CSS Value</name>
+        <description>Negative values assigned to CSS attributes that should never be negative. For example, object width or height.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>39</order>
+        <name>CSS Issues: Overwritten Property Value</name>
+        <description>CSS properties, which are being overwritten in the same ruleset block.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>40</order>
+        <name>CSS Issues: Properties Can Be Replaced With Shorthand</name>
+        <description>This inspection tries to find similar CSS properties, which can be transformed to shorter form (shorthand; padding for individual sides can be shortened to &apos;padding&apos; shorthand if possible, etc).</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>41</order>
+        <name>CSS Issues: Unknown CSS Property</name>
+        <description>Highlights CSS properties that are unknown, and allows to define such properties as &apos;custom&apos; to avoid highlighting them as invalid.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>42</order>
+        <name>CSS Issues: Unknown File or Directory</name>
+        <description>Checks references to files and directories.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>43</order>
+        <name>CSS Issues: Unused CSS Selector</name>
+        <description>Unused CSS classes or IDs within a file.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>44</order>
+        <name>CSS Issues: W3C CSS Violation</name>
+        <description>Calidates the CSS with W3C CSS validator library.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>45</order>
+        <name>Data Handling: Array Size Calculation in Loop</name>
+        <description>While in regular use, count is performs well, this changes rapidly when it&#x92;s used in a loop. If the array contains several elements, this code slows down significantly. </description>
+        <recommendation></recommendation>
+        <priority>Medium</priority>
+        <tags>Performance</tags>
+      </issueName>
+      <issueName>
+        <order>46</order>
+        <name>Data Handling: Data Load in a Loop </name>
+        <description>Such issues are good candidates for performance optimization, it&#x92;s highly possible that collection can be used instead. </description>
+        <recommendation>As PHP interpreters don&#x92;t perform loop-invariant code motion automatically, a much better approach is to move the count call outside of the loop.&#xd;
+          &#xd;
+          Examples:&#xd;
+          $count = count($ids)
+          for ($x = 0; $x &lt; $count; $x++) {
+          //..
+          }&#xd;
+          &#xd;
+          References:&#xd;
+        </recommendation>
+        <priority>High</priority>
+        <tags>Performance</tags>
+      </issueName>
+      <issueName>
+        <order>47</order>
+        <name>Data Handling: Data Recalculation each Method Call</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Medium</priority>
+        <tags>Performance</tags>
+      </issueName>
+      <issueName>
+        <order>48</order>
+        <name>Data Handling: Fetching More Data Than Necessary</name>
+        <description>Magento collection&apos;s result is sometimes not limited correctly when only first item is required to fetch. Even if you appy getFirstItem() method, all items of collection will still be fetched: To load exactly one item don&apos;t forget to limit the result. </description>
+        <recommendation></recommendation>
+        <priority>High</priority>
+        <tags>Performance</tags>
+      </issueName>
+      <issueName>
+        <order>49</order>
+        <name>Data Handling: Function Call in For Expression</name>
+        <description>The calculation of the size of the array, by sizeof or count, is done on every iteration. Move the calculation of the size outside the loop. </description>
+        <recommendation>&#xd;
+          &#xd;
+          Examples:&#xd;
+          for ($i = 0; $i &lt; count($a); $i++) {
+          $a[$i] *= $i;
+          }&#xd;
+          &#xd;
+          References:&#xd;
+        </recommendation>
+        <priority>Medium</priority>
+        <tags>Performance</tags>
+      </issueName>
+      <issueName>
+        <order>50</order>
+        <name>Data Handling: Improper Input Validation</name>
+        <description>The product does not validate or incorrectly validates input that can affect the control flow or data flow of a program.&#xd;
+          &#xd;
+          When software does not validate input properly, an attacker is able to craft the input in a form that is not expected by the rest of the application. This will lead to parts of the system receiving unintended input, which may result in altered control flow, arbitrary control of a resource, or arbitrary code execution.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Security</tags>
+      </issueName>
+      <issueName>
+        <order>51</order>
+        <name>Data Handling: Jumbled Loop Incrementer</name>
+        <description>One and the same incrementer used into an outer and an inner loop</description>
+        <recommendation>Avoid jumbled loop incrementers - it&apos;s usually a mistake, and it&apos;s confusing even if it&apos;s what&apos;s intended.&#xd;
+          &#xd;
+          Examples:&#xd;
+          for ($i = 0; $i &lt; 10; $i++) {
+          for ($k = 0; $k &lt; 20; $i++) {
+          echo &apos;Hello&apos;;
+          }
+          }&#xd;
+          &#xd;
+          References:&#xd;
+        </recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>52</order>
+        <name>Data Handling: Less-than-Optimal CSV File Processing </name>
+        <description>CSV files processing can be simplified using standard php functions or libs available in Magento. </description>
+        <recommendation></recommendation>
+        <priority>High</priority>
+        <tags>Performance</tags>
+      </issueName>
+      <issueName>
+        <order>53</order>
+        <name>Data Handling: Less-than-Optimal Data Handling</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>High</priority>
+        <tags>Performance</tags>
+      </issueName>
+      <issueName>
+        <order>54</order>
+        <name>Data Handling: Less-than-Optimal SOAP Requests </name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>High</priority>
+        <tags>Performance</tags>
+      </issueName>
+      <issueName>
+        <order>55</order>
+        <name>Data Handling: Loading Data which has Been Already Loaded</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>High</priority>
+        <tags>Performance</tags>
+      </issueName>
+      <issueName>
+        <order>56</order>
+        <name>Data Handling: Product loading during order item processing/rendering</name>
+        <description>Explicit load of product model during sales entity (order/invoice/shipment/creditmemo) item processing (rendering).</description>
+        <recommendation>It&apos;s highly recommended to keep order/invoice/shipment/creditmemo item object (i.e. database data behind it) self-sufficient in terms of product data. This will first of all reduce performance impact, since explicit product data load will be not required anymore, and in other hand this will help to avoid unexpected issues caused by updated or even deleted product data.</recommendation>
+        <priority>High</priority>
+        <tags>Architecture,Performance</tags>
+      </issueName>
+      <issueName>
+        <order>57</order>
+        <name>Data Handling: Model Load in a Loop </name>
+        <description>Execution of a SQL query is one of the most resource-taxing operations. Running SQL queries in a loop will probably result in a performance bottleneck. To load the EAV model, several heavy queries are required to execute. As the number of executed queries is multiplied with the number of categories, we get extremely inefficient and slow code.</description>
+        <recommendation>Instead of loading models in a loop, Magento data collections can help to load a set of models in a very efficient manner. &#xd;
+          &#xd;
+          Examples:&#xd;
+          In the following example, filter the result set of collection by array of product ids and add all requested product fields to result:
+          $collection = Mage::getResourceModel(&apos;catalog/product_collection&apos;)
+          -&gt;addFieldToFilter(&apos;entity_id&apos;, array($this-&gt;getProductIds()))
+          -&gt;addAttributeToSelect(array(&apos;name&apos;));
+
+          foreach ($collection as $product) {
+          $this-&gt;processProduct($product);
+          }&#xd;
+          &#xd;
+          References:&#xd;
+        </recommendation>
+        <priority>High</priority>
+        <tags>Performance</tags>
+      </issueName>
+      <issueName>
+        <order>58</order>
+        <name>Data Handling: Not Limiting Collection Load Result</name>
+        <description>Please keep in mind that Varien_Data_Collection::getFirstItem method doesn&apos;t limit the result of SELECT query.</description>
+        <recommendation>Use one of the following options to limit the result of collection load:
+
+          $collection-&gt;setPageSize(1)-&gt;setCurPage(1)
+          //or
+          $collection-&gt;setPage(1,1)
+          //or
+          $collection-&gt;getSelect()-&gt;limit(1)</recommendation>
+        <priority>High</priority>
+        <tags>Performance</tags>
+      </issueName>
+      <issueName>
+        <order>59</order>
+        <name>Data Handling: Overcomplicated Statement</name>
+        <description>Sometimes if can be replaced with switch, for with do and so on.</description>
+        <recommendation>for (;true;) true; statement can be replaced with while (true)</recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>60</order>
+        <name>Data Handling: Redundant Data Processing </name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Performance</tags>
+      </issueName>
+      <issueName>
+        <order>61</order>
+        <name>Data Handling: Redundant Data Transformation</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>62</order>
+        <name>Data Handling: Redundant Queries</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>63</order>
+        <name>Data Handling: Redundant Request to Database</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>64</order>
+        <name>Data Handling: Result is Not Cached for Further Reuse </name>
+        <description>Code snippet is loading the same entity several times.</description>
+        <recommendation>Move code snippet as a method, to prevent code copy-pasting. Cache results in class protected property to prevent requesting the same data several times.</recommendation>
+        <priority>High</priority>
+        <tags>Performance</tags>
+      </issueName>
+      <issueName>
+        <order>65</order>
+        <name>Data Handling: SQL Queries Within a Loop </name>
+        <description>Such methods are definite candidate for review on performance improvement. </description>
+        <recommendation></recommendation>
+        <priority>High</priority>
+        <tags>Performance</tags>
+      </issueName>
+      <issueName>
+        <order>66</order>
+        <name>Data Handling: Unnecessary Data Loading </name>
+        <description>Magento offers a simple LSD (load-save-delete) mechanism to work with data stored in database.</description>
+        <recommendation>It&apos;s mostly unnecessary to load a model if it only needs to be saved. Specify the ID of the model, set the required data and save it.</recommendation>
+        <priority>High</priority>
+        <tags>Performance</tags>
+      </issueName>
+      <issueName>
+        <order>67</order>
+        <name>Data Handling: Unnecessary loading of Magento Collection</name>
+        <description>It&apos;s not necessary to load the data of the all items in a collection just to get the number of them.&#xd;
+          &#xd;
+          The Magento collection implements both IteratorAggregate and Countable PHP5 interfaces. Please consider the following facts: Native collection&apos;s load() method executes SQL and loads data only once, when it&apos;s first time called. It&apos;s not necessary call load() method for receiving collection items.The collection will be implicitly loaded both when you traverse (using foreach) or count (using count() as collection&apos;s method or PHP function) the number of its items. </description>
+        <recommendation>Use the getSize method of collection. See Varien_Data_Collection_Db::getSize.</recommendation>
+        <priority>Medium</priority>
+        <tags>Performance</tags>
+      </issueName>
+      <issueName>
+        <order>68</order>
+        <name>Data Handling: Unnecessary Loop</name>
+        <description>You execute loop to process only one item.</description>
+        <recommendation></recommendation>
+        <priority>Medium</priority>
+        <tags>Performance,Code Style</tags>
+      </issueName>
+      <issueName>
+        <order>69</order>
+        <name>Data Handling: Using fetchAll for Loop Data Processing</name>
+        <description>Using database adapter method fetchAll and collection getItems to fetch large result sets will result in a heavy demand on the system and possibly network resources. With large amounts of data the code above will be executing for a very long time and PHP will probably run out of memory.</description>
+        <recommendation>As a general rule of thumb, to enable the best code performance and scalability, avoid loading large data sets into memory to process them.
+          Use &quot;while ... fetch&quot; construction or Magento  Mage_Core_Model_Resource_Iterator class to iterate data.
+          Examples:
+          In the following example each database row is fetched separately using fetch method to reduce resource consumption:
+          $query = $this-&gt;_getReadAdapter()-&gt;query($select);
+          while ($row = $query-&gt;fetch()) {
+          //process row
+          }&#xd;
+          &#xd;
+          References:&#xd;
+          http://php.net/manual/en/pdostatement.fetch.php</recommendation>
+        <priority>High</priority>
+        <tags>Performance</tags>
+      </issueName>
+      <issueName>
+        <order>70</order>
+        <name>Data Handling: Wrong Data Comparison </name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Logic</tags>
+      </issueName>
+      <issueName>
+        <order>71</order>
+        <name>Database Issues: Altering Database Schema on the Fly</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>High</priority>
+        <tags>Architecture</tags>
+      </issueName>
+      <issueName>
+        <order>72</order>
+        <name>Database Issues: Favoring PHP Over SQL</name>
+        <description>
+          Attempts to solve problems with PHP rather than with SQL sometimes lead to excess/slower code.</description>
+        <recommendation>Logic transfer to the database could improve the code readability, simplicity and speed.</recommendation>
+        <priority>Medium</priority>
+        <tags>Other,Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>73</order>
+        <name>Database Issues: Incorrect Design of Data Model</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Medium</priority>
+        <tags>Architecture</tags>
+      </issueName>
+      <issueName>
+        <order>74</order>
+        <name>Database Issues: Incorrect Use of Database Transactions</name>
+        <description>CREATE, ALTER, DROP, RENAME, TRUNCATE operations cannot be rolled back using MySQL. Keep it in mind when you start to use transactions in your customization.</description>
+        <recommendation></recommendation>
+        <priority>High</priority>
+        <tags>Architecture,Logic,Secure,Performance</tags>
+      </issueName>
+      <issueName>
+        <order>75</order>
+        <name>Database Issues: Non-Optimized SQL Query</name>
+        <description>Single bad SQL query can play havoc with your application. Use EXPLAIN, Query Profiler, and other tools to optimize query.</description>
+        <recommendation></recommendation>
+        <priority></priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>76</order>
+        <name>Database Issues: Normalizing Too Much</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>77</order>
+        <name>Database Issues: Not Normalizing Enough</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>78</order>
+        <name>Database Issues: Not Using Appropriate Indexes (Under- or Over-Indexing)</name>
+        <description>Foreign keys should have indexes on them. If you&apos;re using a field in a WHERE clause of an SQL query you should have an index on it. Such indexes should cover multiple columns based on the queries needed. As a general rule of thumb, indexes should be applied to any column named in the WHERE clause of a SELECT query. For example, assume we have a usertable with a numeric ID (the primary key) and an email address. During log on, MySQL must locate the correct ID by searching for an email. With an index, MySQL can use a fast search algorithm to locate the email almost instantly. Without an index, MySQL must check every record in sequence until the address is found. It&#x92;s tempting to add indexes to every column, however, they are regenerated during every table INSERT or UPDATE. That can hit performance; only add indexes when necessary.</description>
+        <recommendation></recommendation>
+        <priority>High</priority>
+        <tags>Performance</tags>
+      </issueName>
+      <issueName>
+        <order>79</order>
+        <name>Database Issues: Not Using Foreign Keys</name>
+        <description>Your database may vary here but if your database supports referential integrity-meaning that all foreign keys are guaranteed to point to an entity that exists-you should be using it. It&apos;s quite common to see this failure on MySQL databases. MyISAM does not support it. InnoDB does. You&apos;ll find people who are using MyISAM or those that are using InnoDB but aren&apos;t using it anyway.</description>
+        <recommendation></recommendation>
+        <priority>Medium</priority>
+        <tags>Architecture</tags>
+      </issueName>
+      <issueName>
+        <order>80</order>
+        <name>Database Issues: Not Using Prepared Statements</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Medium</priority>
+        <tags>Performance,Security</tags>
+      </issueName>
+      <issueName>
+        <order>81</order>
+        <name>Database Issues: Raw SQL Query</name>
+        <description>Raw sql queries can lead to potential security vulnerabilities and database portability issues.</description>
+        <recommendation>Use data adapter capabilities (Varien_Db_Adapter_Pdo_Mysql by default) to build and execute queries and move all data access code to a resource model. Use prepared statements to make sure that queries are safe to execute.&#xd;
+          &#xd;
+          Examples:&#xd;
+          $table = $this-&gt;getConnection()
+          -&gt;newTable($this-&gt;getTable(&apos;module/table&apos;))
+          -&gt;addColumn(&apos;entity_id&apos;, Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
+          &apos;identity&apos; =&gt; true,
+          &apos;nullable&apos; =&gt; false,
+          &apos;primary&apos;  =&gt; true,
+          ), &apos;Entity Id&apos;)
+
+          //...&#xd;
+          &#xd;
+          References:&#xd;
+        </recommendation>
+        <priority>Medium</priority>
+        <tags>Maintainability,Portability</tags>
+      </issueName>
+      <issueName>
+        <order>82</order>
+        <name>Database Issues: Use of MyISAM Tables</name>
+        <description>MyISAM is used by default. However, it&#x92;s almost certainly the wrong choice. MyISAM doesn&#x92;t support foreign key constraints or transactions, which are essential for data integrity. In addition, the whole table is locked whenever a record is inserted or updated; this causes a detrimental effect on performance as usage grows. All the Magento native database tables are InnoDB based (except those who are used for the full-text search).</description>
+        <recommendation></recommendation>
+        <priority>High</priority>
+        <tags>Architecture</tags>
+      </issueName>
+      <issueName>
+        <order>83</order>
+        <name>Database Issues: Use of OR Conditions in Queries</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>84</order>
+        <name>Database Issues: Use of Wrong Database Adapter</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>85</order>
+        <name>Database Issues: Using Natural Rather Than Surrogate (Technical) Primary Keys</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>86</order>
+        <name>Database Issues: Vertical Table Structure</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>87</order>
+        <name>Database Issues: Wrong MySQL Data Type</name>
+        <description>MySQL offers a range of numeric, string, and time data types. If you&#x92;re storing a date, use a DATE or DATETIME field. Using an INTEGER or STRING can make SQL queries more complicated, if not impossible. It&#x92;s often tempting to invent your own data formats; for example, storing serialized PHP objects in string. Database management may be easier, but MySQL will become a dumb data store and it may lead to problems later.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>88</order>
+        <name>Date/Time Issues: Overcomplicated Date/Time Handling</name>
+        <description></description>
+        <recommendation>Use PHP or Magento out-of-the-box high-level functionality (PHP DateTime, Zend_Date) to facilitate date and time handling. Extract helper method.</recommendation>
+        <priority>Low</priority>
+        <tags>Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>89</order>
+        <name>Dead Code: Commented-Out Code</name>
+        <description></description>
+        <recommendation>Remove commented-out code before deploying the application.</recommendation>
+        <priority>Low</priority>
+        <tags>Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>90</order>
+        <name>Dead Code: Expression is Always False</name>
+        <description>The code contains an expression that will always evaluate to false.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Security</tags>
+      </issueName>
+      <issueName>
+        <order>91</order>
+        <name>Dead Code: Expression is Always True</name>
+        <description>The code contains an expression that will always evaluate to true.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Security</tags>
+      </issueName>
+      <issueName>
+        <order>92</order>
+        <name>Draft: Exsessive Complexity</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>93</order>
+        <name>Draft: Unnecessary Complications</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>94</order>
+        <name>Empty Entities: Empty Class</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>95</order>
+        <name>Empty Entities: Empty Directory</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>96</order>
+        <name>Empty Entities: Empty File</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>97</order>
+        <name>Empty Entities: Empty Statement</name>
+        <description>Empty if/catch/do/else/elseif/switch/try/while statement detected. Please see if more specific issue is available (e.g. Empty Catch Block).</description>
+        <recommendation>Remove empty statement from code.</recommendation>
+        <priority>Medium</priority>
+        <tags>Logic,Other</tags>
+      </issueName>
+      <issueName>
+        <order>98</order>
+        <name>Event Handling: Handling Overly Broad Event</name>
+        <description>The application handles a global event which is triggered very often, for example on every page load.&#xd;
+          &#xd;
+          Setting up overly-broad event handlers requires a bit more overhead than necessary.</description>
+        <recommendation>A specific and appropriate event should be used. Find out which event will best suit your needs. To get a full list of dispatched events, execute the following shell command on Unix-like systems:
+          grep -rin -B2 -A2 &quot;Mage::dispatchEvent&quot; app/* &gt; events.txt.
+          Keep in mind that there are also specific events available for each controller or model.&#xd;
+          &#xd;
+          Examples:&#xd;
+          controller_action_predispatch
+          core_block_abstract_to_html_after
+          model_save_commit_after&#xd;
+          &#xd;
+          References:&#xd;
+          http://www.magentocommerce.com/wiki/5_-_modules_and_development/0_-_module_development_in_magento/customizing_magento_using_event-observer_method
+          http://www.magentocommerce.com/wiki/5_-_modules_and_development/reference/events</recommendation>
+        <priority>Medium</priority>
+        <tags>Performance</tags>
+      </issueName>
+      <issueName>
+        <order>99</order>
+        <name>Event Handling: Misconfigured Event</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>100</order>
+        <name>Event Handling: Not Using Event-Listener Mechanism</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>101</order>
+        <name>Event Handling: Use of Global Event</name>
+        <description></description>
+        <recommendation>
+          Use either &apos;adminhtml&apos; or &apos;frontend&apos; area instead of &apos;global&apos;.</recommendation>
+        <priority>Medium</priority>
+        <tags>Performance</tags>
+      </issueName>
+      <issueName>
+        <order>102</order>
+        <name>Exception Handling: Empty Catch Block</name>
+        <description>&#xd;
+          &#xd;
+          Usually empty catch is a bad idea because you are silently swallowing an error condition and then continuing execution. Occasionally this may be the right thing to do, but often it&apos;s a sign that a developer saw an exception, didn&apos;t know what to do about it, and so used an empty catch to silence the problem.</description>
+        <recommendation>&#xd;
+          &#xd;
+          Examples:&#xd;
+          Log exception at least.&#xd;
+          &#xd;
+          References:&#xd;
+        </recommendation>
+        <priority>Low</priority>
+        <tags>Other,Logic</tags>
+      </issueName>
+      <issueName>
+        <order>103</order>
+        <name>Exception Handling: Wrong Catch Clauses Order</name>
+        <description>Catch clauses are not in the correct order (from the more specific to the more generic) or one exception class is caught twice. If you don&apos;t fix the order, some exceptions may not be catched by the most specific handler.</description>
+        <recommendation></recommendation>
+        <priority>Medium</priority>
+        <tags>Logic</tags>
+      </issueName>
+      <issueName>
+        <order>104</order>
+        <name>Excessive Code Size: Excessive Class Complexity</name>
+        <description>100 WMC per class.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>105</order>
+        <name>Excessive Code Size: Excessive Class Length</name>
+        <description>1000 lines of code per class.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>106</order>
+        <name>Excessive Code Size: Excessive Cyclomatic Complexity</name>
+        <description>This method&apos;s cyclomatic complexity (number) exceeds the maximum allowed of 10.</description>
+        <recommendation>Consider refactoring the method. Break it down into several smaller methods, simplify the if-else constructs.</recommendation>
+        <priority>Low</priority>
+        <tags>Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>107</order>
+        <name>Excessive Code Size: Excessive Method Length</name>
+        <description>100 lines of code per method.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>108</order>
+        <name>Excessive Code Size: Excessive Nesting Level</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>109</order>
+        <name>Excessive Code Size: Excessive NPath Complexity</name>
+        <description>200 acyclic execution paths per method.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>110</order>
+        <name>Excessive Code Size: Excessive Parameter List</name>
+        <description>10 parameters per object.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>111</order>
+        <name>Excessive Code Size: Excessive Public Count</name>
+        <description>45 methods/attributes per class.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>112</order>
+        <name>Excessive Code Size: Too Many Fields</name>
+        <description>15 fields per class.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>113</order>
+        <name>Excessive Code Size: Too Many Methods</name>
+        <description>50 methods per class.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>114</order>
+        <name>Expression Issues: Expression Result Unused</name>
+        <description>Expression is calculated but the calculation result is not used anywhere. This may be caused by a misspelling when the &quot;=&quot; operator is replaced with &quot;==&quot; by mistake.</description>
+        <recommendation>&#xd;
+          &#xd;
+          Examples:&#xd;
+          $a == $this-&gt;canBeDisplayed();
+          if ($a) {
+          //...
+          }&#xd;
+          &#xd;
+          References:&#xd;
+        </recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>115</order>
+        <name>Expression Issues: Operator Precedence Logic Error</name>
+        <description>The program uses an expression in which operator precedence causes incorrect logic to be used.&#xd;
+          &#xd;
+          The program uses an expression in which operator precedence causes incorrect logic to be used.
+          While often just a bug, operator precedence logic errors can have serious consequences if they are used in security-critical code, such as making an authentication decision or processing payment.</description>
+        <recommendation>Regularly wrap sub-expressions in parentheses, especially in security-critical code.</recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>116</order>
+        <name>Expression Issues: Use of Incorrect Operator</name>
+        <description>The programmer accidentally uses the wrong operator, which changes the application logic.&#xd;
+          &#xd;
+          This issue can cause unintended logic to be executed and other unexpected application behavior.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>117</order>
+        <name>Expression Issues: Assigning instead of Comparing</name>
+        <description>The code uses an operator for assignment when the intention was to perform a comparison.&#xd;
+          &#xd;
+          The compare statement is very close in appearance to the assignment statement and are often confused. This bug is generally the result of a typo and usually causes obvious problems with program execution. If the comparison is in an if statement, the if statement will usually evaluate the value of the right-hand side of the predicate.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>118</order>
+        <name>Expression Issues: Comparing instead of Assigning</name>
+        <description>The code uses an operator for comparison when the intention was to perform an assignment.&#xd;
+          &#xd;
+          The compare statement is very close in appearance to the assignment statement; they are often confused.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Logic</tags>
+      </issueName>
+      <issueName>
+        <order>119</order>
+        <name>Hardcoded Entities: Hardcoded Directory Separator</name>
+        <description>Slashes are used as a directory separator.</description>
+        <recommendation>Use constant DS instead of slash symbol. This will make code cross-platform and will conform to Magento best practices.</recommendation>
+        <priority>Low</priority>
+        <tags>Portability</tags>
+      </issueName>
+      <issueName>
+        <order>120</order>
+        <name>Hardcoded Entities: Hardcoded Skin, media and site URLs</name>
+        <description>Any Magento URLs should be retrieved using special functions</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Portability</tags>
+      </issueName>
+      <issueName>
+        <order>121</order>
+        <name>Hardcoded Entities: Hardcoded Table Name</name>
+        <description>Table name {table_name} is hardcoded. The use of hardcoded table names may cause problems during the application upgrade in future. The table name can be changed in the configuration or a table prefix can be set.</description>
+        <recommendation>As a general rule of thumb, always retrieve database table name by an alias declared in the config.xml file. Use the $this-&gt;getMainTable() method to retrieve the main table name.</recommendation>
+        <priority>Low</priority>
+        <tags>Portability</tags>
+      </issueName>
+      <issueName>
+        <order>122</order>
+        <name>Hardcoded Entities: Hardcoded Url</name>
+        <description>There is a hardcoded URL within this class.</description>
+        <recommendation>External URLs should be stored in class constants since it is possible that they may need to be updated in the future. Extract these URLs to the system configuration to provide the best flexibility and utilize the Mage::getUrl() method to generate correct internal URLs.&#xd;
+          &#xd;
+          Examples:&#xd;
+          Mage::getUrl(&apos;cms/page/view&apos;, array(&apos;id&apos; =&gt; 1)); &#xd;
+          &#xd;
+          References:&#xd;
+        </recommendation>
+        <priority>Low</priority>
+        <tags>Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>123</order>
+        <name>Hardcoded Entities: Hardcoded Value</name>
+        <description>Hardcoding values like product type code, store id, file name, credentials, etc. may cause issues during future upgrades or porting.</description>
+        <recommendation>Avoid hard coding values; use class constants or configuration values.&#xd;
+          &#xd;
+          Examples:&#xd;
+          Mage::getConfig()&gt;getOptions()&gt;getMediaDir() or Mage::getBaseDir(&apos;media&apos;) to get media directory&#xd;
+          &#xd;
+          References:&#xd;
+        </recommendation>
+        <priority>Low</priority>
+        <tags>Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>124</order>
+        <name>Hardcoded Entities: Magic Numbers</name>
+        <description></description>
+        <recommendation>Define corresponding class constants and use it instead of direct value.</recommendation>
+        <priority>Low</priority>
+        <tags>Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>125</order>
+        <name>HTML Issues: Deprecated HTML Tag</name>
+        <description>Tags like big, dir, font are deprecated. </description>
+        <recommendation>Replace them with allowed tags.</recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>126</order>
+        <name>HTML Issues: Empty HTML Tag</name>
+        <description>Empty tags (like script) do not work in some browsers. </description>
+        <recommendation>Remove empty tags.</recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>127</order>
+        <name>HTML Issues: Extra Closing Tag For Empty Element</name>
+        <description>Extra closing tag for the empty elements like IMG or BR is not required. </description>
+        <recommendation>Remove extra closing tag.&#xd;
+          &#xd;
+          Examples:&#xd;
+          &lt;img src=&quot;logo.png&quot; alt=&quot;Logo&quot;&gt;&lt;/img&gt;&#xd;
+          &#xd;
+          References:&#xd;
+        </recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>128</order>
+        <name>HTML Issues: Form Input Without an Associated Label</name>
+        <description>Form element without required associated label was detected. </description>
+        <recommendation>Create a new label for that form element.&#xd;
+          &#xd;
+          Examples:&#xd;
+          &lt;form action=&quot;api.php&quot;&gt;
+          &lt;input type=&quot;text&quot; value=&quot;Enter your code&quot;&gt;
+          &lt;/form&gt;&#xd;
+          &#xd;
+          References:&#xd;
+        </recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>129</order>
+        <name>HTML Issues: Image Size Mismatch</name>
+        <description>Width and height attribute values of IMG tag are different from the width and height of the original image. </description>
+        <recommendation>Change width and height or resize image.</recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>130</order>
+        <name>HTML Issues: Malformed Content of Script Tag</name>
+        <description>This inspection checks that the script tag content is valid XML.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>131</order>
+        <name>HTML Issues: Missing Required Attribute</name>
+        <description>HTML tag has missing mandatory attribute. </description>
+        <recommendation>Add requred attribute.&#xd;
+          &#xd;
+          Examples:&#xd;
+          &lt;script&gt; without &quot;type&quot; attribute&#xd;
+          &#xd;
+          References:&#xd;
+        </recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>132</order>
+        <name>HTML Issues: Non-Existent Web Resource</name>
+        <description>Link to non-existent web resource was detected </description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>133</order>
+        <name>HTML Issues: Presentational HTML Tag (b, i, etc.)</name>
+        <description>Tags like b (bold), i (italic) are presentational tags. Their use should be avoided. </description>
+        <recommendation>Replace them with CSS or other tags.&#xd;
+          &#xd;
+          Examples:&#xd;
+          &lt;p&gt;&lt;b&gt;This is bold&lt;/b&gt;, &lt;i&gt;this is italic&lt;/i&gt;&lt;/p&gt;&#xd;
+          &#xd;
+          References:&#xd;
+          http://www.htmldog.com/reference/htmltags/presentational/</recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>134</order>
+        <name>HTML Issues: Unknown Href Target</name>
+        <description>Custom HTML tag was detected </description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>135</order>
+        <name>HTML Issues: Unknown HTML Tag</name>
+        <description>Custom HTML tag was detected </description>
+        <recommendation>Refactor code in case of unexpected behavior.</recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>136</order>
+        <name>HTML Issues: Unknown HTML Tag Attribute</name>
+        <description>Custom HTML tag attribute was detected </description>
+        <recommendation>Refactor code in case of unexpected behavior.</recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>137</order>
+        <name>Incorrect Calculation: Divide By Zero</name>
+        <description>The product divides a value by zero.&#xd;
+          &#xd;
+          This issue typically occurs when an unexpected value is provided to the product, or if an error occurs that is not properly detected. It frequently occurs in calculations involving physical dimensions such as size, length, width, and height.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Logic</tags>
+      </issueName>
+      <issueName>
+        <order>138</order>
+        <name>Indicator of Poor Code Quality: Suspicious Comment</name>
+        <description>The code contains comments that suggest the presence of bugs, incomplete functionality, or security weaknesses.&#xd;
+          &#xd;
+          Many suspicious comments, such as BUG, HACK, FIXME, LATER, LATER2, TODO, in the code indicate missing functionality and checking. Others indicate code problems that programmers should fix, such as hard-coded variables, error handling, not using stored procedures, and performance issues.</description>
+        <recommendation>Remove comments that suggest the presence of bugs, incomplete functionality, or weaknesses, before deploying the application.</recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>139</order>
+        <name>Indicator of Poor Code Quality: Use of Deprecated Core Classes</name>
+        <description>For example custom resource model class extends Mage_Core_Model_Mysql4_Db_Abstract core class.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>140</order>
+        <name>Indicator of Poor Code Quality: Use of Deprecated Functionality</name>
+        <description>Use of deprecated Magento or PHP functions that are kept for compatibility with older versions.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>141</order>
+        <name>Indicator of Poor Code Quality: Use of Obsolete Functionality</name>
+        <description>The code uses deprecated or obsolete functions, which suggests that the code has not been actively reviewed or maintained.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>142</order>
+        <name>Inline Documentation: Inconsistent DocBlock</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>143</order>
+        <name>Inline Documentation: Missing DocBlock</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>144</order>
+        <name>Install/Upgrade Issues: Incorrect Name of Magento Install/Upgrade File</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>145</order>
+        <name>Install/Upgrade Issues: Not Using Magento Data Install Functionality</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Medium</priority>
+        <tags>Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>146</order>
+        <name>Install/Upgrade Issues: Redundant (Empty) Setup Resource Classes</name>
+        <description>For the latest Magento versions it&apos;s not required for a module to have its own setup class.</description>
+        <recommendation>Custom, empty setup class could be removed. If module requires some functionality from the non-default core setup resource model it&apos;s class name should be specified under the setup definition in the module&apos;s main config file.</recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>147</order>
+        <name>Install/Upgrade Issues: Use of Wrong Setup Model</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>148</order>
+        <name>Install/Upgrade Issues: Empty Install/Upgrade File</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>149</order>
+        <name>Internationalization Issues: Declared but Nonexistent Translation Files</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>150</order>
+        <name>Internationalization Issues: Encoding Error</name>
+        <description>The software does not properly encode or decode the data, resulting in unexpected values.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>151</order>
+        <name>Internationalization Issues: Not Using UTF-8 as a Database Encoding</name>
+        <description>UTF-8 solves many internationalization issues. Although it won&#x92;t be properly supported in PHP until version 6.0, there&#x92;s little to prevent you setting MySQL character sets to UTF-8.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>152</order>
+        <name>Logic Errors: Duplicate Array Keys</name>
+        <description>If multiple elements in the array declaration use the same key, only the last one will be used as all others are overwritten. </description>
+        <recommendation>Remove duplicated keys.&#xd;
+          &#xd;
+          Examples:&#xd;
+          array(&quot;1&quot; =&gt; 1, &quot;a&quot; =&gt; 2, 1 =&gt; 3);&#xd;
+          &#xd;
+          References:&#xd;
+          http://php.net/manual/en/language.types.array.php</recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>153</order>
+        <name>Logic Errors: Duplicated Logic</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>154</order>
+        <name>Logic Errors: Duplicated Logic Between Classes</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>155</order>
+        <name>Logic Errors: Excessive Algorithmic Complexity</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Medium</priority>
+        <tags>Architecture</tags>
+      </issueName>
+      <issueName>
+        <order>156</order>
+        <name>Logic Errors: Incorrect or Strange Logic</name>
+        <description>Bugs and error, incorrect usage of Magento features</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>157</order>
+        <name>Logic Errors: Logic is Overcomplicated</name>
+        <description>1) Code is hard to read and understand. A lot of issues. Simplify logic. 2) Cyclomatic_complexity Keep methods small and clear</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>158</order>
+        <name>Logic Errors: Posssible Fatal Error</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>159</order>
+        <name>Logic Errors: Similar Logic</name>
+        <description>Similar/identical code could be probably moved into parent abstract class. Use fabric pattern and one class for manipulations. It will bring fever classes and increase readability</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>160</order>
+        <name>Magento Bad Practices: Custom Module Copy Core Functionality</name>
+        <description>Custom code duplicates native Magento functionality.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>165</order>
+        <name>Magento Bad Practices: Direct Access to Class Fields</name>
+        <description>E.g. in models and in helpers instead of using magic getters and setters.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>166</order>
+        <name>Magento Bad Practices: Direct File Inclusion</name>
+        <description>In case of proper custom module architecture all php files will be loaded by Magento autoloader (exception: overridden native Magento controllers).&#xd;
+          &#xd;
+          Files were included explicitly which violates from Magento best practices. Magento implements autoloader which allows load files automatically if they follow Zend Framework naming conventions.</description>
+        <recommendation>Use autoloader to load files, avoid concatenation expressions with require and include statements.</recommendation>
+        <priority>Low</priority>
+        <tags>Code Style</tags>
+      </issueName>
+      <issueName>
+        <order>167</order>
+        <name>Magento Bad Practices: Direct Object Instantiation</name>
+        <description>Object is instantiated directly using &quot;new&quot; keyword. &#xd;
+          &#xd;
+          Direct class instantiation is not recommended because the class can be rewritten, and if it&apos;s created directly, rewrite will not be applied.</description>
+        <recommendation>Register model in the global/models node of the config.xml and use Mage::getModel method.</recommendation>
+        <priority>Low</priority>
+        <tags>Code Style</tags>
+      </issueName>
+      <issueName>
+        <order>168</order>
+        <name>Magento Bad Practices: Direct Throw of Exception</name>
+        <description>Use  Mage::throwException() to throw new Exception.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>169</order>
+        <name>Magento Bad Practices: Disabled Module</name>
+        <description>Module isn&apos;t active and it&apos;s not recommended to include it to upgraded version</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>170</order>
+        <name>Magento Bad Practices: echo(), header(), etc. calls</name>
+        <description>It&#x92;s not recommended to manually output content or send headers to the client, such operations should be done using Magento response object</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>171</order>
+        <name>Magento Bad Practices: Enabled Useless Module</name>
+        <description>If this module is no longer used, it should be disabled to avoid unnecessary loading. Disable the module -set&quot;&lt;active&gt;false&quot;&lt;/active&gt;instead of&quot;&lt;active&gt;true&quot;&lt;/active&gt;.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>172</order>
+        <name>Magento Bad Practices: Favoring Rewrites Over Event Handling</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Medium</priority>
+        <tags>Architecture,Compatibility</tags>
+      </issueName>
+      <issueName>
+        <order>173</order>
+        <name>Magento Bad Practices: Favoring Rewrites Over Layout Updates</name>
+        <description></description>
+        <recommendation>This approach can be an optimal solution, but if you need more flexibility (e.g. several custom modules affecting the same functionality), consider using the Magento layout updates mechanism.</recommendation>
+        <priority>Medium</priority>
+        <tags>Architecture,Compatibility</tags>
+      </issueName>
+      <issueName>
+        <order>174</order>
+        <name>Magento Bad Practices: Improper Caching of Blocks </name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>175</order>
+        <name>Magento Bad Practices: Improper Use of Magento Collections</name>
+        <description>Use Magento native collection&apos;s method addFieldToFilter(&apos;field_name&apos;, &apos;field_value&apos;) instead of adding conditions directly to a collection&apos;s select object.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other,Code Style</tags>
+      </issueName>
+      <issueName>
+        <order>176</order>
+        <name>Magento Bad Practices: Improper Use of Singleton Object</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>177</order>
+        <name>Magento Bad Practices: Incorrect Action Flow</name>
+        <description>Use _forward() method to throw control to different action</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>178</order>
+        <name>Magento Bad Practices: Incorrect Block Alias Usage</name>
+        <description>Use alias (&apos;core/template&apos;) instead of full class name (&apos;Mage_Core_Block_Template&apos;)</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>179</order>
+        <name>Magento Bad Practices: Incorrect Grid URL</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>180</order>
+        <name>Magento Bad Practices: Incorrect Helper is Used for Translation</name>
+        <description>Extension should use its own helper Mage::helper(&apos;bordership&apos;) for translations instead Mage::helper(&apos;adminhtml&apos;) Usage of Magento core helpers is acceptable to translate messages that is already available in Magento translations. If you need to translate your custom messages, use your own helper. This gives you possibility to implement your own translation files (modifying Magento core translations for purposes of 3-rd party extensions is bad practice).</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>181</order>
+        <name>Magento Bad Practices: Missing Data Helper Implementation</name>
+        <description>To support translations of strings, module data helper should be implemented.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Design</tags>
+      </issueName>
+      <issueName>
+        <order>182</order>
+        <name>Magento Bad Practices: Missing Translate Attribute of XML Node</name>
+        <description>Translation is not enabled for the XML node. The respective module alias to translate with is not specified.</description>
+        <recommendation>If you need to support translation for this node, specify it in the &apos;translate&apos; attribute. Also, specify the module alias using &#x91;module&#x92; attribute if you want to keep the translation within translation files of the current module.&#xd;
+          &#xd;
+          Examples:&#xd;
+          &lt;parentNode translate=&quot;title&quot; module=&quot;YourModule&quot;&gt;&lt;title&gt;Allow Something&lt;/title&gt;&lt;/parentNode&gt;&#xd;
+          &#xd;
+          References:&#xd;
+        </recommendation>
+        <priority>Low</priority>
+        <tags>Design</tags>
+      </issueName>
+      <issueName>
+        <order>183</order>
+        <name>Magento Bad Practices: Missing Wrapper Method for String Translation </name>
+        <description>Strings are not wrapped with __ method.</description>
+        <recommendation>Use proper translation tags in templates.
+          Translation phrase has to be enclosed with translation tag.&#xd;
+          &#xd;
+          Examples:&#xd;
+
+          &lt;?php echo $this-&gt;__(&apos;Original string to translate&apos;)?&gt;&#xd;
+          &#xd;
+          References:&#xd;
+        </recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>184</order>
+        <name>Magento Bad Practices: Misusing Magento Functionality</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>185</order>
+        <name>Magento Bad Practices: Model Name Contains Full Class Name</name>
+        <description></description>
+        <recommendation>Use native (short) Magento style for model naming. Example: instead &lt;model&gt;BorderJump_BorderShip_Model_Carrier_Bordership&lt;/model&gt; should use &lt;model&gt;bordership/carrier_bordership&lt;/model&gt;</recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>186</order>
+        <name>Magento Bad Practices: Module Dependencies are Not Specified</name>
+        <description>This module depends on another module(s); however, this dependency is not specified in the configuration file. It may cause issues when the these module(s) is(are) disabled or replaced with some other module(s).</description>
+        <recommendation>According to best Magento practices it&#x92;s recommended to add dependent modules into the module configuration file (app/etc/modules/Module_Name.xml). Consider what database tables and classes of other modules are used by the custom module.</recommendation>
+        <priority>High</priority>
+        <tags>Maintainability,Other</tags>
+      </issueName>
+      <issueName>
+        <order>187</order>
+        <name>Magento Bad Practices: Module Dir is Formed Incorrectly</name>
+        <description>Use Mage::getModuleDir method</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>188</order>
+        <name>Magento Bad Practices: Not Using $this-&gt;_getSession Methor</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>189</order>
+        <name>Magento Bad Practices: Not Using Design Fallback</name>
+        <description>Copying files from base theme.</description>
+        <recommendation></recommendation>
+        <priority>Medium</priority>
+        <tags>Architecture,Mainatainability</tags>
+      </issueName>
+      <issueName>
+        <order>190</order>
+        <name>Magento Bad Practices: Not Using Fieldsets</name>
+        <description>Fieldsets are used to map attributes.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Code Style</tags>
+      </issueName>
+      <issueName>
+        <order>191</order>
+        <name>Magento Bad Practices: Not Using getRequest method</name>
+        <description>In many classes, the following construction is used:Mage::app()&gt;getFrontController()&gt;getRequest()-&gt;get(&apos;id&apos;)</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>192</order>
+        <name>Magento Bad Practices: Not Using Mage::getResourceModel method</name>
+        <description>Use Mage::getResourceModel() to get resource model</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>193</order>
+        <name>Magento Bad Practices: Not Using Magento OOB Functionality</name>
+        <description>Favoring custom implementation over Magento functionality (see Reinventing the Wheel)</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Code Style,Architecture</tags>
+      </issueName>
+      <issueName>
+        <order>194</order>
+        <name>Magento Bad Practices: Not Using Observer Parameter</name>
+        <description>models are loading instead of using $observer-&gt;get...</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Code Style</tags>
+      </issueName>
+      <issueName>
+        <order>195</order>
+        <name>Magento Bad Practices: Not Using Source Model</name>
+        <description>Magento source model feature can be better used to provide options with labels.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Code Style</tags>
+      </issueName>
+      <issueName>
+        <order>196</order>
+        <name>Magento Bad Practices: PHP Superglobals</name>
+        <description>The Magento application directly uses PHP superglobals rather than Magento wrapper objects.&#xd;
+          &#xd;
+          $GLOBALS, $_SERVER, $_GET, $_POST, $_FILES, $_COOKIE, $_SESSION, $_REQUEST, $_ENV superglobal variables should not be used directly.</description>
+        <recommendation> Use Mage::getSingleton(&apos;core/session&apos;) to get session object, $this-&gt;getRequert()-&gt;getParams() to retrieve request params.</recommendation>
+        <priority>Low</priority>
+        <tags>Security,Compatibility</tags>
+      </issueName>
+      <issueName>
+        <order>197</order>
+        <name>Magento Bad Practices: Private Class Members</name>
+        <description>Magento coding style suggests the usage of private class members only in exceptional cases when there is strong reason to. Otherwise it hurts extensibility. Replace private modifiers with protected ones if possible.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Code Style</tags>
+      </issueName>
+      <issueName>
+        <order>198</order>
+        <name>Magento Bad Practices: Reliance on Magento Version</name>
+        <description>Each of Magento editions (EE, CE, GO) has different version numeration. Should get module version instead Magento version, because modules versions has strict numeration and they are the same for all editions. It&apos;s a bad practice to rely on Magento version, because different Magento editions has different version numeration (CE, EE, PE, Magento Go), so when behavior is changed depends on Magento version in one edition it can be unpredictable in other Magento editions.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>199</order>
+        <name>Magento Bad Practices: Template Setting in Block</name>
+        <description>Template name is hard-coded in block class.</description>
+        <recommendation>A more flexible solution is to use the Magento layout updates mechanism. Specify a template for this block in the respective layout update XML file.</recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>200</order>
+        <name>Use of Low-Level Functionality: Use of exit() or die() </name>
+        <description>A Magento application terminates it&apos;s execution using exit() or die() PHP functions.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>201</order>
+        <name>Magento Bad Practices: Use of Global Function</name>
+        <description></description>
+        <recommendation>Use classes and methods.</recommendation>
+        <priority>Medium</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>202</order>
+        <name>Magento Bad Practices: Use of Global Keyword</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Medium</priority>
+        <tags>Security</tags>
+      </issueName>
+      <issueName>
+        <order>203</order>
+        <name>Magento Bad Practices: Use of Low-Level Functionality</name>
+        <description>The software uses low-level functionality that is explicitly prohibited by the framework or specification under which the software is supposed to operate.&#xd;
+          &#xd;
+          The use of low-level functionality can violate the specification in unexpected ways that effectively disable built-in protection mechanisms, introduce exploitable inconsistencies, or otherwise expose the functionality to attack.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>204</order>
+        <name>Magento Bad Practices: Using getModel to get Resource Model</name>
+        <description>Calling resource model using Mage::getModel() method with specifying resource model name. Some names contain &quot;mysql4&quot; that will be deprecated soon.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other,Code Style</tags>
+      </issueName>
+      <issueName>
+        <order>205</order>
+        <name>Magento Bad Practices: Using Incorrect Helper for String Translation</name>
+        <description>Extension should use its own helper Mage::helper(&apos;bordership&apos;) for translations instead Mage::helper(&apos;adminhtml&apos;) Usage of Magento core helpers is acceptable to translate messages that is already available in Magento translations. If you need to translate your custom messages, use your own helper. This gives you possibility to implement your own translation files (modifying Magento core translations for purposes of 3-rd party extensions is bad practice).</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>206</order>
+        <name>Magento Bad Practices: Using Mysql4 Resource Models</name>
+        <description>Classes whose names contain &apos;Mysql4&apos; will be deprecated soon.&#xd;
+          &#xd;
+          In newer Magento versions, resource models are located in the Model/Resource folder, but not in the Model/Mysql4 folder. There are aliases in the core for the old naming convention to allow for backward-compatibility, but it&#x92;s recommended to name resource models according to the new naming conventions.</description>
+        <recommendation>Use Resource instead of Mysql4. Rename, relocate and change the parent classes for the resource models. </recommendation>
+        <priority>Low</priority>
+        <tags>Compatibility</tags>
+      </issueName>
+      <issueName>
+        <order>207</order>
+        <name>Magento Bad Practices: Redundant Core Block Class Rewrite</name>
+        <description>There is no reason to rewrite core block class.</description>
+        <recommendation>Since custom block class doesn&apos;t modify the behavior of any method in parent core class, but only adds new functionality it&apos;s recommended to implement this functionality as part of custom module helper or additional stand alone block class.</recommendation>
+        <priority>Medium</priority>
+        <tags>Architecture,Compatibility</tags>
+      </issueName>
+      <issueName>
+        <order>208</order>
+        <name>Magento Bad Practices: Redundant Model Save</name>
+        <description>Redundant model save method call.</description>
+        <recommendation>It&apos;s recommended to avoid excessive calls of the model save method, because it produces redundant update DB queries and thus might significantly affect performance.</recommendation>
+        <priority>High</priority>
+        <tags>Performance</tags>
+      </issueName>
+      <issueName>
+        <order>209</order>
+        <name>Magento Code Structure Issues: Class Name Doesn&#x92;t Correspond to File Name and/or Path</name>
+        <description>In case of usage class won&#x92;t be found by autoloader, which will lead to PHP warnings and possibly fatal errors.
+          Possible further php class autoloading problems</description>
+        <recommendation>Rename</recommendation>
+        <priority>Low</priority>
+        <tags>Other,Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>210</order>
+        <name>Magento Code Structure Issues: Incorrect Custom Module Folder Structure</name>
+        <description>A typical custom module should consist of the following folders: [&#x93;Block&#x94;], [&#x93;Helper&#x94;], [&#x93;Model&#x94;], [&#x93;controllers&#x94;], [&#x93;data&#x94;], &#x93;etc&#x94;, [&#x93;sql&#x94;] and exception classes. Any divergence from this structure ususally indicates fundamental Magento architecture issues.</description>
+        <recommendation></recommendation>
+        <priority>Medium</priority>
+        <tags>Architecture</tags>
+      </issueName>
+      <issueName>
+        <order>211</order>
+        <name>Magento Code Structure Issues: Method or Class has no Relation to the Current Module</name>
+        <description>Move it to the appropriate module.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>212</order>
+        <name>Magento Code Structure Issues: Use of Magento Core Namespace in Local/Community Code Pool</name>
+        <description>Mage, Enterprise, Zend, Varien namespaces in local/community code pool. </description>
+        <recommendation>All custom modules should be located in the namespace named by the name of developing company. Use local Mage namespace only if you want to explicitly rewrite Magento core class.</recommendation>
+        <priority>Low</priority>
+        <tags>Compatibility</tags>
+      </issueName>
+      <issueName>
+        <order>213</order>
+        <name>Magento Code Structure Issues: Use of Wrong Magento Code Pool</name>
+        <description>Custom code should be placed under the local code pool. Community modules should not be placed in the local code pool.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Compatibility</tags>
+      </issueName>
+      <issueName>
+        <order>214</order>
+        <name>Magento Code Structure Issues: Wrong place for Resource Model</name>
+        <description>In new Magento version resource models are placedinto folder model/resource/ not in folder model/resource/eav/mysql4. For now,there are aliases in core for old style naming (for back-compatibility), butits recommended to name resource models according to new standard.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>215</order>
+        <name>Magento Missconfiguration: Configuration in Wrong Configuration File</name>
+        <description>ACL (menu) configuration is defined in the config.xml file.</description>
+        <recommendation>In order to follow Magento best practices and to provide better control, the adminhtml.xml file should house this configuration. Create an adminhtml.xml file and move the ACL (menu) config section there.</recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>216</order>
+        <name>Magento Missconfiguration: Custom Module Configuration Conflict</name>
+        <description>Custom module configuration conflicts with core or other (community/custom) modules. </description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>217</order>
+        <name>Magento Missconfiguration: Duplicated XML Node</name>
+        <description>Remove code duplicates.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>218</order>
+        <name>Magento Missconfiguration: Incorrect Nodes or Node Values in Custom Module Configuration Files </name>
+        <description>For example &#x93;class&#x94; node of event observer should contain model alias instead of direct class name</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>219</order>
+        <name>Magento Missconfiguration: Incorrect Structure of Magento XML Configuration File </name>
+        <description>Configuration sections defined as part of wrong parents, for example &#x96; &lt;models&gt; section declared as &lt;config&gt; node child, but should be in config/global.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>220</order>
+        <name>Magento Missconfiguration: Missing Required Config Node</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>221</order>
+        <name>Magento Missconfiguration: Redundant Config Elements Declaration</name>
+        <description>For example blocks alias declared in config.xml but module doesn&#x92;t have any block classes, or frontend router declared in config.xml but module doesn&#x92;t have any controllers, etc.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>222</order>
+        <name>Magento Missconfiguration: Use of Standard Router to Handle Admin Routes</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>223</order>
+        <name>Magento MVC Issues: Business Logic in Block</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Architecture</tags>
+      </issueName>
+      <issueName>
+        <order>224</order>
+        <name>Magento MVC Issues: Business Logic in Helper</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Architecture</tags>
+      </issueName>
+      <issueName>
+        <order>225</order>
+        <name>Magento MVC Issues: Configuration Access Code in the Wrong Place</name>
+        <description>Configuration access code, that addresses configuration values placed in the config.xml file is embedded directly within the curent class.</description>
+        <recommendation>Extract the code into the data helper of the current module.</recommendation>
+        <priority>Low</priority>
+        <tags>Architecture,Code Style</tags>
+      </issueName>
+      <issueName>
+        <order>226</order>
+        <name>Magento MVC Issues: Inappropriate Logic in Magento Block</name>
+        <description>Block should be responsible only for preparing output data for rendering.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Architecture,Code Style</tags>
+      </issueName>
+      <issueName>
+        <order>227</order>
+        <name>Magento MVC Issues: Inappropriate Logic in Magento Helper </name>
+        <description>Helper should house only helper functionality such as providing config values, translation of strings, data transformation.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Architecture,Code Style</tags>
+      </issueName>
+      <issueName>
+        <order>228</order>
+        <name>Magento MVC Issues: Inappropriate Logic in Magento Template </name>
+        <description>Magento template should only render HTML.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Architecture,Code Style</tags>
+      </issueName>
+      <issueName>
+        <order>229</order>
+        <name>Magento MVC Issues: Inappropriate Logic in Magento Controller</name>
+        <description>Controller should handle request and response and pass controls to models.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Architecture,Code Style</tags>
+      </issueName>
+      <issueName>
+        <order>230</order>
+        <name>Magento MVC Issues: Inappropriate Logic in Magento Model </name>
+        <description>Models contain business logic, work with resources.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Architecture,Code Style</tags>
+      </issueName>
+      <issueName>
+        <order>231</order>
+        <name>Magento MVC Issues: Inline CSS</name>
+        <description></description>
+        <recommendation>Move styles to CSS files.</recommendation>
+        <priority>Low</priority>
+        <tags>Other,Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>232</order>
+        <name>Magento MVC Issues: Inline HTML</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other,Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>233</order>
+        <name>Magento MVC Issues: Inline JavaScript</name>
+        <description></description>
+        <recommendation>Try to move similar JavaScript to separate js files</recommendation>
+        <priority>Low</priority>
+        <tags>Other,Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>234</order>
+        <name>Magento MVC Issues: Inline XML</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other,Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>235</order>
+        <name>Magento MVC Issues: Data Access Code Outside of Resource Model</name>
+        <description></description>
+        <recommendation>All low level database queries should be implemented only as part of resource models.</recommendation>
+        <priority>Low</priority>
+        <tags>Architecture,Code Style</tags>
+      </issueName>
+      <issueName>
+        <order>236</order>
+        <name>Magento MVC Issues: Wrong Module Design</name>
+        <description>The purpose of the {module_name} module is not clear; it doesn&apos;t take any responsibility and contains only configuration file/install files/empty helper class.
+          It appears that it was developed to be used only for string translation, or that the development has not been finished. No usage of module&apos;s class were found within the local code pool.</description>
+        <recommendation>Remove this module before deploying application on production servers.</recommendation>
+        <priority>Low</priority>
+        <tags>Architecture</tags>
+      </issueName>
+      <issueName>
+        <order>237</order>
+        <name>Magento MVC Issues: Wrong Place for Business Logic</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Architecture</tags>
+      </issueName>
+      <issueName>
+        <order>238</order>
+        <name>Magento MVC Issues: Wrong Place for Configuration</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Architecture</tags>
+      </issueName>
+      <issueName>
+        <order>239</order>
+        <name>Magento MVC Issues: Wrong Place for SQL</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Architecture</tags>
+      </issueName>
+      <issueName>
+        <order>240</order>
+        <name>Magento MVC Issues: Business Logic in Template</name>
+        <description>A lot of php code, model loads, try-catch blocks, etc. All logic should be accessed through block class methods</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Architecture</tags>
+      </issueName>
+      <issueName>
+        <order>241</order>
+        <name>Non-Optimized SQL Query: Constant Output Column</name>
+        <description>An output column is unnecessary if it contains a single value that is constant and can be derived from the query without any knowledge about the database state.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>242</order>
+        <name>Non-Optimized SQL Query: DISTINCT in SUM and AVG</name>
+        <description>For the aggregation functions SUM and AVG, duplicates are most likely significant.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>243</order>
+        <name>Non-Optimized SQL Query: Duplicate Output Column</name>
+        <description>An output column is unnecessary if it is always identical to another output column.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>244</order>
+        <name>Non-Optimized SQL Query: GROUP BY can be Replaced by DISTINCT</name>
+        <description>If exactly the SELECT-attributes are listed under GROUP BY, and no aggregation functions are used, the GROUP BY clause can be replaced by SELECT DISTINCT (which is shorter and clearer).</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>245</order>
+        <name>Non-Optimized SQL Query: GROUP BY with Only a Single Group</name>
+        <description>If it can be proven that there is always only a single group, the GROUP BY clause is unnecessary, except when the GROUP BY attribute should be printed under SELECT.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>246</order>
+        <name>Non-Optimized SQL Query: GROUP BY with Singleton Groups</name>
+        <description>If it can be proven that each group consists only of a single row, the entire aggregation is unnecessary.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>247</order>
+        <name>Non-Optimized SQL Query: IN/EXITS Condition can be Replaced by
+          Comparison</name>
+        <description>Consider the following query:
+          SELECT ENAME
+          FROM EMP X
+          WHERE X.EMPNO NOT IN
+          (SELECT Y.EMPNO
+          FROM EMP Y
+          WHERE Y.JOB = &#x92;MANAGER&#x92;)
+          The WHERE-condition can be equivalently replaced by
+          X.JOB &lt;&gt; &#x92;MANAGER&#x92;. The point here is that the
+          two tuple variables over the same relation are matched
+          on their key.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>248</order>
+        <name>Non-Optimized SQL Query: Inconsistent Conditions</name>
+        <description>Query always results in an empty or constant value.&#xd;
+          &#xd;
+          Nobody would pose a query if he or she knew beforehand that the query result is empty, no matter what the database state is. In general, one could also construct other queries that have a constant result for all database states (maybe under the assumption that relations are not empty).</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>249</order>
+        <name>Non-Optimized SQL Query: Inefficient HAVING</name>
+        <description>If a condition uses only GROUP BY attributes and no aggregation function, it can be written under WHERE or under HAVING. It is much cheaper to check it already under WHERE.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Performance</tags>
+      </issueName>
+      <issueName>
+        <order>250</order>
+        <name>Non-Optimized SQL Query: LIKE without Wildcard</name>
+        <description>If LIKE is used without wildcards &quot;%&quot; and &quot;_&quot;, it can and should be replaced by &quot;=&quot;.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Performance</tags>
+      </issueName>
+      <issueName>
+        <order>251</order>
+        <name>Non-Optimized SQL Query: SQL Query Produces Many Duplicates</name>
+        <description>Query results that contain many duplicates are difficult to read. It is unlikely that such a query is really intended.
+          Furthermore, duplicates are often an indication for another error.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>252</order>
+        <name>Non-Optimized SQL Query: Strange HAVING</name>
+        <description>Using HAVING without a GROUP BY clause is strange: Such a query can have only one result or none at all.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>253</order>
+        <name>Non-Optimized SQL Query: UNION can be Replaced by OR</name>
+        <description>If the two SELECT-expressions use the same FROM-list the same SELECT-list, and mutually exclusive WHERE conditions, UNION ALL can be replaced by a single query with the WHERE-conditions connect by OR. There are similar conditions for UNION.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Othre</tags>
+      </issueName>
+      <issueName>
+        <order>254</order>
+        <name>Non-Optimized SQL Query: Unnecessarily Complicated SELECT List in EXISTS-Subquery</name>
+        <description>In EXISTS-subqueries, the SELECT list is not important. Therefore, it should be something simple (e.g. &#x93;*&#x94; or &#x93;1&#x94; or a single attribute).</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>255</order>
+        <name>Non-Optimized SQL Query: Unnecessary DISTINCT</name>
+        <description>One should use an explicit duplicate elimination only when necessary.
+
+          MIN and MAX never need DISTINCT. When
+          DISTINCT is used in other aggregation functions, it
+          might not be necessary because of keys.&#xd;
+          &#xd;
+          Because of keys it sometimes can be proven that a query cannot return duplicates. Then DISTINCT should not be used, because the query then will run slower. Always writing &quot;DISTINCT&quot; furthermore shadows possible errors: When a query does produce duplicates, it is often helpful to understand why.</description>
+        <recommendation></recommendation>
+        <priority></priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>256</order>
+        <name>Non-Optimized SQL Query: Unnecessary GROUP BY Attributes</name>
+        <description>If a grouping attribute is functionally determined by other such attributes and if it does not appear under SELECT or HAVING outside of aggregations, it can be removed from the GROUP BY clause.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>257</order>
+        <name>Non-Optimized SQL Query: Wildcards without LIKE</name>
+        <description>When &quot;=&quot; is used with a comparison string that contains &quot;%&quot;, probably &quot;LIKE&quot; was meant.&#xd;
+          &#xd;
+          For the other wildcard, &quot;_&quot;, it is not that clear, because it might more often appear in normal strings.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>258</order>
+        <name>Numeric Errors: Incorrect Calculation</name>
+        <description>The software performs a calculation that generates incorrect or unintended results that are later used in security-critical decisions or resource management.&#xd;
+          &#xd;
+          When software performs a security-critical calculation incorrectly, it might lead to incorrect resource allocations, incorrect privilege assignments, or failed comparisons among other things. Many of the direct results of an incorrect calculation can lead to even larger problems such as failed protection mechanisms or even arbitrary code execution.</description>
+        <recommendation>Understand your programming language&apos;s underlying representation and how it interacts with numeric calculation. Pay close attention to byte size discrepancies, precision, signed/unsigned distinctions, truncation, conversion and casting between types, &quot;not-a-number&quot; calculations, and how your language handles numbers that are too large or too small for its underlying representation.
+          Perform input validation on any numeric input by ensuring that it is within the expected range. Enforce that the input meets both the minimum and maximum requirements for the expected range.
+          Use languages, libraries, or frameworks that make it easier to handle numbers without unexpected consequences.</recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>259</order>
+        <name>OOP Bad Practices: Abuse of Utility Classes </name>
+        <description>Utility classes are classes that have only static methods that perform some operation on the objects passed as parameters. Such classes typically have no state. A large number of such classes (particularly those with only a single method) indicates that the designers are thinking upside-down, i.e. thinking of that which can be done to an object rather than that which can done by the object. </description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>260</order>
+        <name>OOP Bad Practices: Classes Without Oo </name>
+        <description>Putting lots and lots of methods on one big massive &quot;do it all&quot; class. </description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>261</order>
+        <name>OOP Bad Practices: Code not in OOP style </name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>262</order>
+        <name>OOP Bad Practices: Dynamic Method Called as Static</name>
+        <description>Dynamic class method called as static. Recommendation: Fix it. </description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>263</order>
+        <name>OOP Bad Practices: Missed or Incorrect Method Access Identifier</name>
+        <description>Define variables using appropriate access identifiers private, protected or public. Recommendation: Refactor code. References: http://php.net/manual/en/language.oop5.visibility.php</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>264</order>
+        <name>OOP Bad Practices: Misusing Inheritance </name>
+        <description>Using inheritance to utilize base class members even when there is no clear &apos;type of&apos; relationship. </description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>265</order>
+        <name>OOP Bad Practices: Multiple Classes in One File</name>
+        <description>More than one PHP class found in one file.</description>
+        <recommendation>Extract each class into separate file.</recommendation>
+        <priority>High</priority>
+        <tags>Architecture,Mainatainability</tags>
+      </issueName>
+      <issueName>
+        <order>266</order>
+        <name>OOP Bad Practices: Multiple Interfaces in One File</name>
+        <description>More than one PHP interface found in one file.</description>
+        <recommendation>Extract each interface into separate file.</recommendation>
+        <priority>High</priority>
+        <tags>Architecture,Mainatainability</tags>
+      </issueName>
+      <issueName>
+        <order>267</order>
+        <name>OOP Bad Practices: Not Usign Fluent Interface</name>
+        <description>Some classes such as Zend_Db_Select provides fluent interface for their methods. This means that their methods always returns reference to the calling object (the object to which the method belongs), so you can use chains of method calls. </description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Maintainability,Code Style</tags>
+      </issueName>
+      <issueName>
+        <order>268</order>
+        <name>OOP Bad Practices: Not using Magic Methods</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>269</order>
+        <name>OOP Bad Practices: Not Using Polymorphism </name>
+        <description>Using duplicate sets of &apos;if&apos; (or switch/case) statements instead. </description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>270</order>
+        <name>OOP Bad Practices: Over Generalizing </name>
+        <description>Generalizing to the point where some difference (which is probably what we are trying to identify) is lost. The hard part is insuring that all parties have Generalized in a direction, which still contains the difference. </description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>271</order>
+        <name>OOP Bad Practices: Overlooking Parent Behavior </name>
+        <description>Failure to look to parents for inherited behavior in library classes. Beginners seem to forget that a Class has a parent class and hence inherits the methods of that parent class. </description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>272</order>
+        <name>OOP Bad Practices: Unnecessary Final modifier in Final class</name>
+        <description>Final method modifier is not necessary in final class.</description>
+        <recommendation>Remove final modifier</recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>273</order>
+        <name>OOP Bad Practices: Use of Abstract Static Function </name>
+        <description>PHP Strict Standards: Static function should not be abstract. It&apos;s feasible but discouraged. </description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>274</order>
+        <name>Performance Issues: HTTP Cache Headers Settings are Misconfigured </name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>275</order>
+        <name>Performance Issues: Improper System Resources Usage</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>276</order>
+        <name>Performance Issues: Multiple Method Calls </name>
+        <description>Save result of the method call to variable and reuse it, extract method and call it only once </description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>277</order>
+        <name>Performance Issues: Multiple Model Loading</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>278</order>
+        <name>PHP Bad Practices: Character before PHP Opening Tag</name>
+        <description>Character before &lt;?php tag would cause Headers already sent error.</description>
+        <recommendation></recommendation>
+        <priority>High</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>279</order>
+        <name>PHP Bad Practices: Incorrect Use of PHP Reference</name>
+        <description>Call-time pass-by-reference is disallowed. Objects are always passed by reference. &quot;new&quot; returns a reference automatically.</description>
+        <recommendation>Read documentation on references in PHP 5 and refactor your code.</recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>280</order>
+        <name>PHP Bad Practices: Use of Goto</name>
+        <description></description>
+        <recommendation>Avoid goto in your code.</recommendation>
+        <priority>Low</priority>
+        <tags>Code Style</tags>
+      </issueName>
+      <issueName>
+        <order>281</order>
+        <name>PHP Bad Practices: Using Double Quotes Instead of Single</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Performance, Code Style</tags>
+      </issueName>
+      <issueName>
+        <order>282</order>
+        <name>PHP Bad Practices: Use of Silence Operator</name>
+        <description>Using silence operator (@) to suppress errors is usually a bad idea.</description>
+        <recommendation>Avoid silence operator (@) usage. Find the cause of error and fix it rather than swallowing it. Be aware that using @ is dog-slow, as PHP incurs overhead to suppressing errors in this way. It&apos;s a trade-off between speed and convenience.</recommendation>
+        <priority>Low</priority>
+        <tags>Code Style,Performance</tags>
+      </issueName>
+      <issueName>
+        <order>283</order>
+        <name>PHPStorm Inspections: Constant Reassignment</name>
+        <description>Second assignment has no effect. PHP notice will be raised.</description>
+        <recommendation>Remove second constand assignment.&#xd;
+          &#xd;
+          Examples:&#xd;
+          const a = 5;
+          const a = -5;&#xd;
+          &#xd;
+          References:&#xd;
+          http://php.net/manual/en/language.constants.php</recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>284</order>
+        <name>PHPStorm Inspections: Foreach Array Is Used As Value </name>
+        <description>Using a variable both as an &apos;array expression&apos; and as a &apos;key&apos; or &apos;value&apos; most often is a typing error.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>285</order>
+        <name>PHPStorm Inspections: Unresolved Include</name>
+        <description>Include expression is not resolved.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>286</order>
+        <name>PHPStorm Inspections: Wrong __toString Return Type</name>
+        <description>__toString method must return a string, as otherwise a fatal E_RECOVERABLE_ERROR level error is emitted.</description>
+        <recommendation>&#xd;
+          &#xd;
+          Examples:&#xd;
+          public function __toString()
+          {
+          if (!$this-&gt;getId()) {
+          return false;
+          }
+          return &quot;&quot;Object id: #&quot;&quot; . $this-&gt;getId();
+          }&#xd;
+          &#xd;
+          References:&#xd;
+          http://php.net/manual/en/language.oop5.magic.php#object.tostring</recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>287</order>
+        <name>Redundant Entities: Redundant Code</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>288</order>
+        <name>Redundant Entities: Redundant PHP Closing Tag</name>
+        <description>Closing tag &apos;?&gt;&apos; is redundant for files containing only PHP code</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Code Style</tags>
+      </issueName>
+      <issueName>
+        <order>289</order>
+        <name>Redundant Entities: Useless Code</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>290</order>
+        <name>Security Issues: Cleartext Storage of Sensitive Information</name>
+        <description>The application stores sensitive information in cleartext within a resource that might be accessible to another control sphere, when the information should be encrypted or otherwise protected.&#xd;
+          &#xd;
+          Because the information is stored in cleartext, attackers could potentially read it.</description>
+        <recommendation></recommendation>
+        <priority>High</priority>
+        <tags>Security</tags>
+      </issueName>
+      <issueName>
+        <order>291</order>
+        <name>Security Issues: Empty Password in Configuration File</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>High</priority>
+        <tags>Security</tags>
+      </issueName>
+      <issueName>
+        <order>292</order>
+        <name>Security Issues: Executable Regular Expression Error</name>
+        <description>The product uses a regular expression that either (1) contains an executable component with user-controlled inputs, or (2) allows a user to enable execution by inserting pattern modifiers.&#xd;
+          &#xd;
+          Case (2) is possible in the PHP preg_replace() function, and possibly in other languages when a user-controlled input is inserted into a string that is later parsed as a regular expression.</description>
+        <recommendation>e (PREG_REPLACE_EVAL) modifier has been DEPRECATED as of PHP 5.5.0. Relying on this feature is highly discouraged.&#xd;
+          &#xd;
+          Examples:&#xd;
+          &lt;?php
+          $html = $_POST[&apos;html&apos;];
+
+          // uppercase headings
+          $html = preg_replace(
+          &apos;(&lt;h([1-6])&gt;(.*?)&lt;/h\1&gt;)e&apos;,
+          &apos;&quot;&lt;h$1&gt;&quot; . strtoupper(&quot;$2&quot;) . &quot;&lt;/h$1&gt;&quot;&apos;,
+          $html
+          );
+
+          The above example code can be easily exploited by passing in a string such as &lt;h1&gt;{${eval($_GET[php_code])}}&lt;/h1&gt;. This gives the attacker the ability to execute arbitrary PHP code and as such gives him nearly complete access to your server.
+
+          To prevent this kind of remote code execution vulnerability the preg_replace_callback() function should be used instead:
+
+          &lt;?php
+          $html = $_POST[&apos;html&apos;];
+
+          // uppercase headings
+          $html = preg_replace_callback(
+          &apos;(&lt;h([1-6])&gt;(.*?)&lt;/h\1&gt;)&apos;,
+          function ($m) {
+          return &quot;&lt;h$m[1]&gt;&quot; . strtoupper($m[2]) . &quot;&lt;/h$m[1]&gt;&quot;;
+          },
+          $html
+          );&#xd;
+          &#xd;
+          References:&#xd;
+          http://php.net/manual/en/reference.pcre.pattern.modifiers.php</recommendation>
+        <priority>High</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>293</order>
+        <name>Security Issues: Hardcoded Domain in HTML </name>
+        <description>Including a script from another domain means that the security of this web page is dependent on the security of the other domain. </description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Security</tags>
+      </issueName>
+      <issueName>
+        <order>294</order>
+        <name>Security Issues: Hidden Field in HTML</name>
+        <description>A hidden form field is used. </description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Security</tags>
+      </issueName>
+      <issueName>
+        <order>295</order>
+        <name>Security Issues: Improper Access Control (ACL)</name>
+        <description>The software does not restrict or incorrectly restricts access to a resources from an unauthorized actor.&#xd;
+          &#xd;
+          Access control involves the use of several protection mechanisms such as authentication (proving the identity of an actor) authorization (ensuring that a given actor can access a resource), and accountability (tracking of activities that were performed). When any mechanism is not applied or otherwise fails, attackers can compromise the security of the software by gaining privileges, reading sensitive information, executing commands, evading detection, etc.
+
+          There are two distinct behaviors that can introduce access control weaknesses:
+          - Specification: incorrect privileges, permissions, ownership, etc. are explicitly specified for either the user or the resource (for example, setting a password file to be world-writable, or giving administrator capabilities to a guest user). This action could be performed by the program or the administrator.
+          - Enforcement: the mechanism contains errors that prevent it from properly enforcing the specified access control requirements (e.g., allowing the user to specify their own privileges, or allowing a syntactically-incorrect ACL to produce insecure settings). This problem occurs within the program itself, in that it does not actually enforce the intended security policy that the administrator specifies.</description>
+        <recommendation>Very carefully manage the setting, management, and handling of privileges. Explicitly manage trust zones in the software.
+          Compartmentalize the system to have &quot;safe&quot; areas where trust boundaries can be unambiguously drawn. Do not allow sensitive data to go outside of the trust boundary and always be careful when interfacing with a compartment outside of the safe area.
+          Ensure that appropriate compartmentalization is built into the system design and that the compartmentalization serves to allow for and further reinforce privilege separation functionality. Architects and designers should rely on the principle of least privilege to decide when it is appropriate to use and to drop system privileges.</recommendation>
+        <priority>High</priority>
+        <tags>Security</tags>
+      </issueName>
+      <issueName>
+        <order>296</order>
+        <name>Security Issues: Improper Encoding or Escaping of Output</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>High</priority>
+        <tags>Security</tags>
+      </issueName>
+      <issueName>
+        <order>297</order>
+        <name>Security Issues: Improper Quoting of Identifiers</name>
+        <description>This inspection performs SQL identifier names check.</description>
+        <recommendation></recommendation>
+        <priority>High</priority>
+        <tags>Security</tags>
+      </issueName>
+      <issueName>
+        <order>298</order>
+        <name>Security Issues: Improper Validation of Array Index</name>
+        <description>The product uses untrusted input when calculating or using an array index, but the product does not validate or incorrectly validates the index to ensure the index references a valid position within the array.</description>
+        <recommendation></recommendation>
+        <priority>Medium</priority>
+        <tags>Security</tags>
+      </issueName>
+      <issueName>
+        <order>299</order>
+        <name>Security Issues: Information Exposure Through an Error Message</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Medium</priority>
+        <tags>Security</tags>
+      </issueName>
+      <issueName>
+        <order>300</order>
+        <name>Security Issues: Insufficient Encapsulation</name>
+        <description>The product does not sufficiently encapsulate critical data or functionality.&#xd;
+          &#xd;
+          Encapsulation is about drawing strong boundaries. In a web browser that might mean ensuring that your mobile code cannot be abused by other mobile code. On the server it might mean differentiation between validated data and unvalidated data, between one user&apos;s data and another&apos;s, or between data users are allowed to see and data that they are not.</description>
+        <recommendation></recommendation>
+        <priority>Medium</priority>
+        <tags>Security</tags>
+      </issueName>
+      <issueName>
+        <order>301</order>
+        <name>Security Issues: Leftover Debug Code</name>
+        <description>The application can be deployed with active debugging code that can create unintended entry points.</description>
+        <recommendation>Remove debug code before deploying the application.</recommendation>
+        <priority>Medium</priority>
+        <tags>Security</tags>
+      </issueName>
+      <issueName>
+        <order>302</order>
+        <name>Security Issues: Plaintext Storage of a Password</name>
+        <description>Storing a password in plaintext may result in a compromise of the system.</description>
+        <recommendation>Avoid storing passwords in easily accessible locations.
+          Consider storing cryptographic hashes of passwords as an alternative to storing in plaintext.</recommendation>
+        <priority>High</priority>
+        <tags>Security</tags>
+      </issueName>
+      <issueName>
+        <order>303</order>
+        <name>Security Issues: Public Non-Action Method in Controller </name>
+        <description>Such methods should be &#x93;protected&#x94;.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Security</tags>
+      </issueName>
+      <issueName>
+        <order>304</order>
+        <name>Security Issues: Sensitive Data Under Web Root</name>
+        <description>The application stores sensitive data under the web document root with insufficient access control, which might make it accessible to untrusted parties.</description>
+        <recommendation>Avoid storing information under the web root directory.
+          Access control permissions should be set to prevent reading/writing of sensitive files inside/outside of the web directory.</recommendation>
+        <priority>High</priority>
+        <tags>Security</tags>
+      </issueName>
+      <issueName>
+        <order>305</order>
+        <name>Security Issues: Use of Hard-coded, Security-relevant Constants</name>
+        <description>The program uses hard-coded constants instead of symbolic names for security-critical values, which increases the likelihood of mistakes during code maintenance or security policy change.&#xd;
+          &#xd;
+          If the developer does not find all occurrences of the hard-coded constants, an incorrect policy decision may be made if one of the constants is not changed. Making changes to these values will require code changes that may be difficult or impossible once the system is released to the field. In addition, these hard-coded values may become available to attackers if the code is ever disclosed.</description>
+        <recommendation>Avoid using hard-coded constants. Configuration files offer a more flexible solution.</recommendation>
+        <priority>Medium</priority>
+        <tags>Security</tags>
+      </issueName>
+      <issueName>
+        <order>306</order>
+        <name>Security Issues: Use of PHP Dangerous Function</name>
+        <description>Functions that cannot be used safely should never be used. </description>
+        <recommendation></recommendation>
+        <priority>Medium</priority>
+        <tags>Security</tags>
+      </issueName>
+      <issueName>
+        <order>307</order>
+        <name>SQL Queries Within a Loop : Delete Query in a Loop</name>
+        <description></description>
+        <recommendation>Prepare an array of ids in a loop and then run one DELETE IN query on this array out of the loop.</recommendation>
+        <priority>Medium</priority>
+        <tags>Performance</tags>
+      </issueName>
+      <issueName>
+        <order>308</order>
+        <name>String Errors: Favoring Regular Expression Over PHP Function </name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority></priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>309</order>
+        <name>String Errors: Improper Handling of Case Sensitivity</name>
+        <description>The software does not properly account for differences in case sensitivity when accessing or determining the properties of a resource, leading to inconsistent results.</description>
+        <recommendation></recommendation>
+        <priority></priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>310</order>
+        <name>String Errors: Improper String Handling</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority></priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>311</order>
+        <name>String Errors: Improper strpos Return Value Testing</name>
+        <description>strpos/strripos PHP functions may return Boolean FALSE, but may also return a non-Boolean value which evaluates to FALSE.</description>
+        <recommendation>Use the === operator for testing the return value of this function.</recommendation>
+        <priority>Medium</priority>
+        <tags>Logic</tags>
+      </issueName>
+      <issueName>
+        <order>312</order>
+        <name>String Errors: Incorrect Use of Regular Expression </name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority></priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>313</order>
+        <name>String Errors: Less-than-optimal String Processing</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority></priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>314</order>
+        <name>String Errors: Non-Optimal Regular Expression</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority></priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>315</order>
+        <name>String Errors: Regular Expression DoS</name>
+        <description>Untrusted data is passed to the application and used as a regular expression. This can cause the thread to over-consume CPU resources. </description>
+        <recommendation></recommendation>
+        <priority>High</priority>
+        <tags>Performance,Security</tags>
+      </issueName>
+      <issueName>
+        <order>316</order>
+        <name>String Errors: Uncontrolled Format String</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority></priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>317</order>
+        <name>String Errors: Unnecessary String Concatenation</name>
+        <description>There is no point concat two strings together.</description>
+        <recommendation>Use one string instead.</recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>318</order>
+        <name>String Errors: Wrong String Concatenation</name>
+        <description>Attempt to concatenate strings using &apos;+&apos; operator instead of &apos;.&apos;. In most cases it is coding error.  </description>
+        <recommendation></recommendation>
+        <priority>Medium</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>319</order>
+        <name>Syntax Error: Syntax Error In Magento XML Configuration File</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>High</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>320</order>
+        <name>Syntax Error: Syntax Error In Magento XML Layout Update File</name>
+        <description>Syntax errors might lead to fatal errors.</description>
+        <recommendation></recommendation>
+        <priority>High</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>321</order>
+        <name>Type Compatibility: Illegal Array Key Type</name>
+        <description>Arrays and objects cannot be used as array keys.</description>
+        <recommendation>Use only numbers or strings as array keys.&#xd;
+          &#xd;
+          Examples:&#xd;
+
+          &#xd;
+          &#xd;
+          References:&#xd;
+          http://www.php.net/manual/en/language.types.array.php</recommendation>
+        <priority>Medium</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>322</order>
+        <name>Type Compatibility: Invalid Argument Supplied for Foreach</name>
+        <description>Foreach construct is applicable to arrays and objects only. Invocation parameter types are not compatible with declared.</description>
+        <recommendation>Use proper items with foreach. Validate an argument before handling it.&#xd;
+          &#xd;
+          Examples:&#xd;
+          if (is_array($values))
+          {
+          foreach ($values as $value) {
+          //...
+          }
+          }&#xd;
+          &#xd;
+          References:&#xd;
+          http://www.php.net/manual/en/control-structures.foreach.php</recommendation>
+        <priority>Medium</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>323</order>
+        <name>Type Compatibility: Invalid Parameter Type</name>
+        <description>Invocation parameter types are not compatible with declared.</description>
+        <recommendation></recommendation>
+        <priority>Medium</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>324</order>
+        <name>Undefined Entities: Undefined Class</name>
+        <description>Declaration of referenced class is not found in built-in library and project files.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>325</order>
+        <name>Undefined Entities: Undefined Class Constant</name>
+        <description>Referenced constant is not found in subject class.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>326</order>
+        <name>Undefined Entities: Undefined Constant </name>
+        <description>Declaration of referenced constant is not found in built-in library and project files.  </description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>327</order>
+        <name>Undefined Entities: Undefined Field </name>
+        <description>Referenced field is not found in subject class. </description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>328</order>
+        <name>Undefined Entities: Undefined Function </name>
+        <description>Declaration of referenced function is not found in built-in library and project files.  </description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>329</order>
+        <name>Undefined Entities: Undefined Method</name>
+        <description>Referenced method is not found in subject class. </description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>330</order>
+        <name>Undefined Entities: Undefined Namespace</name>
+        <description>Referenced namespace is not found. </description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>331</order>
+        <name>Undefined Entities: Undefined Variable</name>
+        <description>Cannot find a definition for the variable. </description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>332</order>
+        <name>Unused Entities: Dead Code</name>
+        <description></description>
+        <recommendation>Check business logic.
+          Remove dead code before deploying the application.</recommendation>
+        <priority>Low</priority>
+        <tags>Other</tags>
+      </issueName>
+      <issueName>
+        <order>333</order>
+        <name>Unused Entities: Unused Field</name>
+        <description>Direct usages of the field are not found.  </description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other,Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>334</order>
+        <name>Unused Entities: Unused Import</name>
+        <description>Usage of statement &apos;use&apos; was not found.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other,Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>335</order>
+        <name>Unused Entities: Unused Method</name>
+        <description>Direct usages of the method are not found.  </description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Other,Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>336</order>
+        <name>Unused Entities: Unused Parameter</name>
+        <description>Method&apos;s parameter is never used.&#xd;
+          &#xd;
+          A parameter is considered unused in the following cases:
+          -Parameter is passed by value and the value is not used anywhere or is overwritten immediately.
+          -Parameter is passed by reference and the reference is not used anywhere or is overwritten immediately.
+          It is likely that the parameter is simply vestigial, but it is also possible that the unused variable points out a bug.</description>
+        <recommendation>Remove unused parameters from the code.</recommendation>
+        <priority>Low</priority>
+        <tags>Other,Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>337</order>
+        <name>Unused Entities: Unused Variable</name>
+        <description>The variable&apos;s value is assigned but never used, making it a dead store.&#xd;
+          &#xd;
+          A variable is considered unused in the following cases:
+          -The value of the variable is not used anywhere or is overwritten immediately.
+          -The reference stored in the variable is not used anywhere or is overwritten immediately.
+          It is likely that the variable is a left-over from development; however, it is also possible that the unused variable points out a bug.</description>
+        <recommendation>Remove unused variables from the code.</recommendation>
+        <priority>Low</priority>
+        <tags>Other,Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>338</order>
+        <name>Use of Obsolete Functionality: Use of split PHP Function</name>
+        <description>The code uses the &apos;split&apos; function which has been deprecated since PHP 5.3.0. The use of this function suggests that the code has not been actively reviewed or maintained.&#xd;
+          &#xd;
+          Relying on this function is highly discouraged. Use &apos;explode&apos; function instead.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags>Maintainability, Other</tags>
+      </issueName>
+      <issueName>
+        <order>339</order>
+        <name>Use of Obsolete Functionality: Use of var Keyword</name>
+        <description>This code uses obsolete class member variables which suggests that it has not been actively reviewed or maintained.&#xd;
+          &#xd;
+          Class member variables are a PHP4 feature which will work in PHP5, but will raise an E_STRICT warning from version 5.0.0 up to version 5.1.2, as of which they has been deprecated.</description>
+        <recommendation>Declare these class members as public.</recommendation>
+        <priority>Low</priority>
+        <tags>Maintainability</tags>
+      </issueName>
+      <issueName>
+        <order>340</order>
+        <name>Useless Computations: Useless Computations in the Loop</name>
+        <description>The code in the loop does not depend on the currently iterated item.</description>
+        <recommendation>As PHP interpreter doesn&#x92;t perform loop-invariant code motion automatically, a much better way is to move it outside the loop</recommendation>
+        <priority>Medium</priority>
+        <tags>Performance</tags>
+      </issueName>
+      <issueName>
+        <order>341</order>
+        <name>XML Issues: Invalid XML File</name>
+        <description>File Does not pass external validation&#xd;
+          &#xd;
+          Check XML file for DTD / schema compliance using Xerces validator</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>342</order>
+        <name>XML Issues: Unbound XML namespace prefix</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>343</order>
+        <name>XML Issues: Unresolved DTD Reference</name>
+        <description>Checks consistency of DTD specific references, e.g. references to XML entity or to DTD element declaration.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>344</order>
+        <name>XML Issues: Unresolved File References in XML</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>345</order>
+        <name>XML Issues: Unresolved or Duplicate ID</name>
+        <description>Duplicate &quot;id&quot; attributes in XML.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>346</order>
+        <name>XML Issues: Unused XML schema declaration</name>
+        <description>Unused namespace declarations and location hints in XML.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>347</order>
+        <name>XML Issues: Wrong XML Root Element</name>
+        <description>Root tag name is the same as in &lt;doctype&gt;.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>348</order>
+        <name>XML Issues: XML Tag Empty body</name>
+        <description></description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+      <issueName>
+        <order>349</order>
+        <name>Other</name>
+        <description>Everything ELSE.</description>
+        <recommendation></recommendation>
+        <priority>Low</priority>
+        <tags></tags>
+      </issueName>
+    </issueNames>
     <tags>
-      <tag name="correctness"/>
-      <tag name="cosmetic"/>
-      <tag name="documentation"/>
-      <tag name="duplication"/>
-      <tag name="maintenability"/>
-      <tag name="optimization"/>
-      <tag name="portability"/>
-      <tag name="question"/>
-      <tag name="standard"/>
+      <tag name="Architecture"/>
+      <tag name="Code Style"/>
+      <tag name="Compatibility"/>
+      <tag name="Design"/>
+      <tag name="Logic"/>
+      <tag name="Maintainability"/>
+      <tag name="Other"/>
+      <tag name="Performance"/>
+      <tag name="Portability"/>
+      <tag name="Reliability"/>
+      <tag name="Security"/>
     </tags>
   </referential>
 </review>
