@@ -300,7 +300,7 @@ public class Issue extends AbstractRevuEntity<Issue> implements IRevuHistoryHold
 
   public int compareTo(Issue o)
   {
-    return history.getCreatedOn().compareTo(o.getHistory().getCreatedOn());
+    return hashCode() - o.hashCode();
   }
 
   @Override
