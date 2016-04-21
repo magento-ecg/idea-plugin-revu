@@ -16,365 +16,309 @@ import java.util.*;
  * @version $Id$
  */
 public class Review extends AbstractRevuEntity<Review> implements IRevuHistoryHolderEntity<Review>,
-  IRevuUniqueNameHolderEntity<Review>
-{
-  private Review extendedReview;
-  private File file;
-  private History history;
-  private String name;
-  private String goal;
-  private boolean shared;
-  private ReviewStatus status;
-  private boolean embedded;
-  private DataReferential dataReferential;
-  private FileScope fileScope;
-  private Map<VirtualFile, List<Issue>> issuesByFiles;
-  private final transient List<IIssueListener> issueListeners;
-  private boolean externalizable; // not in hashcode/equals?!
+        IRevuUniqueNameHolderEntity<Review> {
+    private Review extendedReview;
+    private File file;
+    private History history;
+    private String name;
+    private String goal;
+    private boolean shared;
+    private ReviewStatus status;
+    private boolean embedded;
+    private DataReferential dataReferential;
+    private FileScope fileScope;
+    private Map<VirtualFile, List<Issue>> issuesByFiles;
+    private final transient List<IIssueListener> issueListeners;
+    private boolean externalizable; // not in hashcode/equals?!
 
-  public Review(@Nullable String name)
-  {
-    this.name = name;
-    history = new History();
-    issuesByFiles = new HashMap<VirtualFile, List<Issue>>();
-    issueListeners = new LinkedList<IIssueListener>();
-    dataReferential = new DataReferential(this);
-    fileScope = new FileScope();
-    externalizable = true;
-  }
-
-  public Review()
-  {
-    this(null);
-  }
-
-  public Review getExtendedReview()
-  {
-    return extendedReview;
-  }
-
-  public void setExtendedReview(Review extendedReview)
-  {
-    this.extendedReview = extendedReview;
-  }
-
-  public File getFile()
-  {
-    return file;
-  }
-
-  public void setFile(File file)
-  {
-    this.file = file;
-  }
-
-  public History getHistory()
-  {
-    return history;
-  }
-
-  public void setHistory(History history)
-  {
-    this.history = history;
-  }
-
-  public boolean isShared()
-  {
-    return shared;
-  }
-
-  public void setShared(boolean shared)
-  {
-    this.shared = shared;
-  }
-
-  public ReviewStatus getStatus()
-  {
-    return status;
-  }
-
-  public void setStatus(ReviewStatus status)
-  {
-    this.status = status;
-  }
-
-  public boolean isEmbedded()
-  {
-    return embedded;
-  }
-
-  public void setEmbedded(boolean embedded)
-  {
-    this.embedded = embedded;
-  }
-
-  public String getName()
-  {
-    return name;
-  }
-
-  public void setName(String name)
-  {
-    this.name = name;
-  }
-
-  public String getGoal()
-  {
-    return goal;
-  }
-
-  public void setGoal(String goal)
-  {
-    this.goal = goal;
-  }
-
-  @NotNull
-  public DataReferential getDataReferential()
-  {
-    return dataReferential;
-  }
-
-  public void setDataReferential(DataReferential dataReferential)
-  {
-    this.dataReferential = dataReferential;
-  }
-
-  @NotNull
-  public FileScope getFileScope()
-  {
-    return fileScope;
-  }
-
-  public void setFileScope(FileScope fileScope)
-  {
-    this.fileScope = fileScope;
-  }
-
-  public boolean isExternalizable()
-  {
-    return externalizable;
-  }
-
-  public void setExternalizable(boolean externalizable)
-  {
-    this.externalizable = externalizable;
-  }
-
-  @NotNull
-  public Map<VirtualFile, List<Issue>> getIssuesByFiles()
-  {
-    return Collections.unmodifiableMap(issuesByFiles);
-  }
-
-  public void setIssues(List<Issue> issues)
-  {
-    issuesByFiles.clear();
-    for (Issue issue : issues)
-    {
-      List<Issue> fileIssues = issuesByFiles.get(issue.getFile());
-      if (fileIssues == null)
-      {
-        fileIssues = new ArrayList<Issue>();
-        issuesByFiles.put(issue.getFile(), fileIssues);
-      }
-      fileIssues.add(issue);
-    }
-  }
-
-  @NotNull
-  public List<Issue> getIssues(@NotNull VirtualFile file)
-  {
-    List<Issue> fileIssues = issuesByFiles.get(file);
-    return (fileIssues == null) ? new ArrayList<Issue>(0) : Collections.unmodifiableList(fileIssues);
-  }
-
-  @NotNull
-  public boolean hasIssues(@NotNull VirtualFile file)
-  {
-    return issuesByFiles.containsKey(file);
-  }
-
-  @NotNull
-  public List<Issue> getIssues()
-  {
-    List<Issue> result = new ArrayList<Issue>();
-
-    for (List<Issue> issues : issuesByFiles.values())
-    {
-      for (Issue issue : issues)
-      {
-        result.add(issue);
-      }
+    public Review(@Nullable String name) {
+        this.name = name;
+        history = new History();
+        issuesByFiles = new HashMap<VirtualFile, List<Issue>>();
+        issueListeners = new LinkedList<IIssueListener>();
+        dataReferential = new DataReferential(this);
+        fileScope = new FileScope();
+        externalizable = true;
     }
 
-    return result;
-  }
-
-  public void addIssue(Issue issue)
-  {
-    List<Issue> fileIssues = issuesByFiles.get(issue.getFile());
-    if (fileIssues == null)
-    {
-      fileIssues = new ArrayList<Issue>();
-      issuesByFiles.put(issue.getFile(), fileIssues);
-    }
-    fileIssues.add(issue);
-
-    // Defensive copy against concurrent modifications
-    List<IIssueListener> copy = new ArrayList<IIssueListener>(issueListeners);
-    for (IIssueListener listener : copy)
-    {
-      listener.issueAdded(issue);
-    }
-  }
-
-  public void removeIssue(Issue issue)
-  {
-    List<Issue> fileIssues = issuesByFiles.get(issue.getFile());
-    if (fileIssues != null)
-    {
-      fileIssues.remove(issue);
+    public Review() {
+        this(null);
     }
 
-    // Defensive copy against concurrent modifications
-    List<IIssueListener> copy = new ArrayList<IIssueListener>(issueListeners);
-    for (IIssueListener listener : copy)
-    {
-      listener.issueDeleted(issue);
-    }
-  }
-
-  public void fireIssueUpdated(Issue issue)
-  {
-    // Defensive copy against concurrent modifications
-    List<IIssueListener> copy = new ArrayList<IIssueListener>(issueListeners);
-    for (IIssueListener listener : copy)
-    {
-      listener.issueUpdated(issue);
-    }
-  }
-
-  public void addIssueListener(IIssueListener listener)
-  {
-    issueListeners.add(listener);
-  }
-
-  public void removeIssueListener(IIssueListener listener)
-  {
-    issueListeners.remove(listener);
-  }
-
-  public boolean hasIssueListener(IIssueListener listener)
-  {
-    return issueListeners.contains(listener);
-  }
-
-  public void clearIssuesListeners()
-  {
-    issueListeners.clear();
-  }
-
-  public void copyFromTemplate(@NotNull Review otherReview)
-  {
-    extendedReview = otherReview.extendedReview;
-    file = otherReview.file;
-    history = otherReview.history;
-    name = otherReview.name;
-    goal = otherReview.goal;
-    shared = otherReview.shared;
-    status = otherReview.status;
-    embedded = otherReview.embedded;
-    dataReferential = otherReview.dataReferential;
-    fileScope = otherReview.fileScope;
-  }
-
-  @Override
-  public Review clone()
-  {
-    Review clone = super.clone();
-
-    DataReferential referentialClone = clone.getDataReferential().clone();
-    clone.setDataReferential(referentialClone);
-    referentialClone.setReview(clone);
-
-    clone.setFileScope(clone.getFileScope().clone());
-
-    return clone;
-  }
-
-  public int compareTo(Review o)
-  {
-    if (isEmbedded())
-    {
-      return o.isEmbedded() ? name.compareToIgnoreCase(o.getName()) : -1;
+    public Review getExtendedReview() {
+        return extendedReview;
     }
 
-    if (o.isEmbedded())
-    {
-      return 1;
+    public void setExtendedReview(Review extendedReview) {
+        this.extendedReview = extendedReview;
     }
 
-    return name.compareToIgnoreCase(o.getName());
-  }
-
-  @Override
-  public boolean equals(Object o)
-  {
-    if (!(o instanceof Review))
-    {
-      return false;
-    }
-    if (this == o)
-    {
-      return true;
+    public File getFile() {
+        return file;
     }
 
-    Review r = (Review) o;
-    return new EqualsBuilder()
-      .append(status, r.status)
-      .append(embedded, r.embedded)
-      .append(shared, r.shared)
-      .append(dataReferential, r.dataReferential)
-      .append(goal, r.goal)
-      .append(extendedReview, r.extendedReview)
-      .append(history, r.history)
-      .append(issuesByFiles, r.issuesByFiles)
-      .append(file, r.file)
-      .append(name, r.name)
-      .append(fileScope, r.fileScope)
-      .isEquals();
-  }
+    public void setFile(File file) {
+        this.file = file;
+    }
 
-  @Override
-  public int hashCode()
-  {
-    return new HashCodeBuilder()
-      .append(extendedReview == null ? "" : extendedReview.getName())
-      .append(file)
-      .append(history)
-      .append(name)
-      .append(goal)
-      .append(shared)
-      .append(status)
-      .append(embedded)
-      .append(dataReferential)
-      .append(issuesByFiles)
-      .append(fileScope)
-      .toHashCode();
-  }
+    public History getHistory() {
+        return history;
+    }
 
-  @Override
-  public String toString()
-  {
-    return new ToStringBuilder(this).
-      append("history", history).
-      append("name", name).
-      append("goal", goal).
-      append("status", status).
-      append("embedded", embedded).
-      append("issuesByFiles", issuesByFiles).
-      append("issueListeners", issueListeners).
-      append("dataReferential", dataReferential).
-      toString();
-  }
+    public void setHistory(History history) {
+        this.history = history;
+    }
+
+    public boolean isShared() {
+        return shared;
+    }
+
+    public void setShared(boolean shared) {
+        this.shared = shared;
+    }
+
+    public ReviewStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ReviewStatus status) {
+        this.status = status;
+    }
+
+    public boolean isEmbedded() {
+        return embedded;
+    }
+
+    public void setEmbedded(boolean embedded) {
+        this.embedded = embedded;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getGoal() {
+        return goal;
+    }
+
+    public void setGoal(String goal) {
+        this.goal = goal;
+    }
+
+    @NotNull
+    public DataReferential getDataReferential() {
+        return dataReferential;
+    }
+
+    public void setDataReferential(DataReferential dataReferential) {
+        this.dataReferential = dataReferential;
+    }
+
+    @NotNull
+    public FileScope getFileScope() {
+        return fileScope;
+    }
+
+    public void setFileScope(FileScope fileScope) {
+        this.fileScope = fileScope;
+    }
+
+    public boolean isExternalizable() {
+        return externalizable;
+    }
+
+    public void setExternalizable(boolean externalizable) {
+        this.externalizable = externalizable;
+    }
+
+    @NotNull
+    public Map<VirtualFile, List<Issue>> getIssuesByFiles() {
+        return Collections.unmodifiableMap(issuesByFiles);
+    }
+
+    public void setIssues(List<Issue> issues) {
+        issuesByFiles.clear();
+        for (Issue issue : issues) {
+            List<Issue> fileIssues = issuesByFiles.get(issue.getFile());
+            if (fileIssues == null) {
+                fileIssues = new ArrayList<Issue>();
+                issuesByFiles.put(issue.getFile(), fileIssues);
+            }
+            fileIssues.add(issue);
+        }
+    }
+
+    @NotNull
+    public List<Issue> getIssues(@NotNull VirtualFile file) {
+        List<Issue> fileIssues = issuesByFiles.get(file);
+        return (fileIssues == null) ? new ArrayList<Issue>(0) : Collections.unmodifiableList(fileIssues);
+    }
+
+    @NotNull
+    public boolean hasIssues(@NotNull VirtualFile file) {
+        return issuesByFiles.containsKey(file);
+    }
+
+    @NotNull
+    public List<Issue> getIssues() {
+        List<Issue> result = new ArrayList<Issue>();
+
+        for (List<Issue> issues : issuesByFiles.values()) {
+            for (Issue issue : issues) {
+                result.add(issue);
+            }
+        }
+
+        return result;
+    }
+
+    public void addIssue(Issue issue) {
+        List<Issue> fileIssues = issuesByFiles.get(issue.getFile());
+        if (fileIssues == null) {
+            fileIssues = new ArrayList<Issue>();
+            issuesByFiles.put(issue.getFile(), fileIssues);
+        }
+        fileIssues.add(issue);
+
+        // Defensive copy against concurrent modifications
+        List<IIssueListener> copy = new ArrayList<IIssueListener>(issueListeners);
+        for (IIssueListener listener : copy) {
+            listener.issueAdded(issue);
+        }
+    }
+
+    public void removeIssue(Issue issue) {
+        List<Issue> fileIssues = issuesByFiles.get(issue.getFile());
+        if (fileIssues != null) {
+            fileIssues.remove(issue);
+        }
+
+        // Defensive copy against concurrent modifications
+        List<IIssueListener> copy = new ArrayList<IIssueListener>(issueListeners);
+        for (IIssueListener listener : copy) {
+            listener.issueDeleted(issue);
+        }
+    }
+
+    public void fireIssueUpdated(Issue issue) {
+        // Defensive copy against concurrent modifications
+        List<IIssueListener> copy = new ArrayList<IIssueListener>(issueListeners);
+        for (IIssueListener listener : copy) {
+            listener.issueUpdated(issue);
+        }
+    }
+
+    public void addIssueListener(IIssueListener listener) {
+        issueListeners.add(listener);
+    }
+
+    public void removeIssueListener(IIssueListener listener) {
+        issueListeners.remove(listener);
+    }
+
+    public boolean hasIssueListener(IIssueListener listener) {
+        return issueListeners.contains(listener);
+    }
+
+    public void clearIssuesListeners() {
+        issueListeners.clear();
+    }
+
+    public void copyFromTemplate(@NotNull Review otherReview) {
+        extendedReview = otherReview.extendedReview;
+        file = otherReview.file;
+        history = otherReview.history;
+        name = otherReview.name;
+        goal = otherReview.goal;
+        shared = otherReview.shared;
+        status = otherReview.status;
+        embedded = otherReview.embedded;
+        dataReferential = otherReview.dataReferential;
+        fileScope = otherReview.fileScope;
+    }
+
+    @Override
+    public Review clone() {
+        Review clone = super.clone();
+
+        DataReferential referentialClone = clone.getDataReferential().clone();
+        clone.setDataReferential(referentialClone);
+        referentialClone.setReview(clone);
+
+        clone.setFileScope(clone.getFileScope().clone());
+
+        return clone;
+    }
+
+    public int compareTo(Review o) {
+        if (isEmbedded()) {
+            return o.isEmbedded() ? name.compareToIgnoreCase(o.getName()) : -1;
+        }
+
+        if (o.isEmbedded()) {
+            return 1;
+        }
+
+        return name.compareToIgnoreCase(o.getName());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Review)) {
+            return false;
+        }
+        if (this == o) {
+            return true;
+        }
+
+        Review r = (Review) o;
+        return new EqualsBuilder()
+                .append(status, r.status)
+                .append(embedded, r.embedded)
+                .append(shared, r.shared)
+                .append(dataReferential, r.dataReferential)
+                .append(goal, r.goal)
+                .append(extendedReview, r.extendedReview)
+                .append(history, r.history)
+                .append(issuesByFiles, r.issuesByFiles)
+                .append(file, r.file)
+                .append(name, r.name)
+                .append(fileScope, r.fileScope)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(extendedReview == null ? "" : extendedReview.getName())
+                .append(file)
+                .append(history)
+                .append(name)
+                .append(goal)
+                .append(shared)
+                .append(status)
+                .append(embedded)
+                .append(dataReferential)
+                .append(issuesByFiles)
+                .append(fileScope)
+                .toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this).
+                append("history", history).
+                append("name", name).
+                append("goal", goal).
+                append("status", status).
+                append("embedded", embedded).
+                append("issuesByFiles", issuesByFiles).
+                append("issueListeners", issueListeners).
+                append("dataReferential", dataReferential).
+                toString();
+    }
 }
