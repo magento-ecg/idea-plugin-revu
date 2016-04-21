@@ -2,7 +2,7 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="org.sylfra.idea.plugins.revu.ui.toolwindow.IssueBrowsingPane">
   <grid id="27dc6" binding="contentPane" default-binding="true" layout-manager="CardLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="20" y="20" width="711" height="400"/>
+      <xy x="20" y="20" width="731" height="549"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -38,7 +38,7 @@
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints border-constraint="North"/>
                     <properties>
-                      <preferredSize width="64" height="24"/>
+                      <preferredSize width="64" height="30"/>
                     </properties>
                     <border type="none"/>
                     <children>
@@ -73,13 +73,17 @@
                   <grid id="4e027" class="com.intellij.openapi.ui.Splitter" binding="splitFilter" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
                     <constraints border-constraint="Center"/>
                     <properties>
+                      <autoscrolls value="true"/>
                       <secondComponent value=""/>
                     </properties>
                     <border type="none"/>
                     <children>
                       <component id="ece2f" class="org.sylfra.idea.plugins.revu.ui.toolwindow.tree.IssueTree" binding="issueTree" custom-create="true">
                         <constraints/>
-                        <properties/>
+                        <properties>
+                          <autoscrolls value="true"/>
+                          <visible value="true"/>
+                        </properties>
                       </component>
                     </children>
                   </grid>
